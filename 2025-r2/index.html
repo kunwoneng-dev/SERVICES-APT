@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2025년 2차 모의훈련 · 국세청 세금계산서 알림 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+.mail-head .row > span:last-child { min-width: 0; word-break: break-all; }
+.bar { display: block; padding: 14px 22px; color: #fff; font-weight: bold; font-size: 18px; border-radius: 0; }
+.bar small { display: block; font-weight: normal; font-size: 12px; opacity: .85; }
+.mail-body { padding: 22px; }
+.mail-body h3 { margin: 0 0 12px; font-size: 20px; }
+.mail-body p { margin: 0 0 12px; }
+.box { border-radius: 8px; padding: 12px 16px; margin: 14px 0; }
+.box p, .box ul { margin: 4px 0; }
+.box ul { padding-left: 20px; }
+.box-y { background: #fff8e1; border-left: 4px solid #ffc107; }
+.box-o { background: #fff3e0; border-left: 4px solid #ff9800; color: #bf360c; }
+.box-b { background: #e3f2fd; border: 1px solid #bbdefb; color: #1565c0; }
+.kv { width: 100%; border-collapse: collapse; font-size: 14px; }
+.kv td { padding: 7px 4px; border-bottom: 1px solid #eee; vertical-align: top; }
+.kv td:first-child { width: 32%; font-weight: bold; }
+.red { color: #d32f2f; font-weight: bold; }
+.fakebtn { display: block; margin: 20px auto; background: var(--brand); color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; max-width: 360px; }
+.mail-foot { padding: 16px 22px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.mail-foot p { margin: 0 0 6px; }
+.fakebtn.flag.found { background: #a33a0a !important; }
+.bar.flag { outline-offset: -3px; border-radius: 0; }
+.rules code { font-size: 13px; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h2>1. 2025년 2차 모의훈련 메일입니다 <span class="counter" id="flagCounter">0 / 6</span></h2>
+  <p class="lead">2025년 2차 모의훈련에서 발송한 메일을 재현했습니다(받는 사람은 홍길동으로, 보낸사람 주소·링크는 교육용 예시로 바꿈).
+    수상한 곳을 <b>직접 클릭</b>해 6군데를 모두 찾아보세요.</p>
+
+  <div class="mail">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span><span class="flag" data-flag="sender">국세청 &lt;notice@nts-etax-mail.com&gt;<span class="badge">!</span></span></div>
+      <div class="row"><span class="k">받는사람</span><span>honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span><span>[국세청] 세금계산서 발행 알림</span></div>
+    </div>
+    <div class="bar flag" data-flag="brand" style="background:#003d82">국세청<span class="badge">!</span><small>National Tax Service · 전자세금계산서시스템</small></div>
+    <div class="mail-body">
+      <p>안녕하세요. <b>건원엔지니어링</b> 담당자님<br>
+        <span style="color:#666;font-size:14px">사업자등록번호: ***-**-***** | 대표자: 홍길동</span></p>
+      <div class="box box-b"><b>세금계산서가 발행되었습니다</b><br>
+        귀 사업장에 대한 세금계산서가 전자세금계산서 시스템을 통해 발행되었습니다. <b>즉시 확인</b>하여 세무처리에 차질이 없도록 하시기 바랍니다.</div>
+      <table class="kv">
+        <tr><td>발행일자</td><td>2025.08.○○</td></tr>
+        <tr><td>공급자</td><td>한국전력공사</td></tr>
+        <tr><td>품목</td><td>전기료 (2025년 7월분)</td></tr>
+        <tr><td>공급가액</td><td><span class="flag" data-flag="amount"><span class="red">₩ 2,847,300</span><span class="badge">!</span></span></td></tr>
+      </table>
+      <div class="box box-o"><div class="flag" data-flag="threat"><b>⚠ 중요 안내사항</b><ul><li>세금계산서는 <b>발행일로부터 5일 이내</b>에 확인하셔야 합니다.</li><li>미확인 시 가산세가 부과될 수 있습니다.</li></ul><span class="badge">!</span></div></div>
+      <span class="fakebtn flag" data-flag="link" style="background:#003d82" title="실제 링크: 국세청처럼 꾸민 가짜 주소">🔍 세금계산서 즉시 확인<span class="badge">!</span></span>
+      <p style="font-size:13px;color:#666;text-align:center">※ 위 버튼을 클릭하시면 전자세금계산서 시스템으로 이동합니다</p>
+    </div>
+    <div class="mail-foot"><p>본 메일은 전자세금계산서 발행에 따른 법정 의무 안내입니다.</p>
+      <p><span class="flag" data-flag="trust">※ 세금계산서의 진위 여부는 국세청 홈택스에서 확인할 수 있습니다.<span class="badge">!</span></span></p>
+      <p>※ 본 메일에 대한 회신은 처리되지 않습니다.</p></div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li><b>세금계산서·세무 안내 메일은 버튼을 누르지 말고</b> 주소창에 홈택스 주소를 직접 입력해 접속하거나, 재무 담당 부서에 확인합니다.</li>
+    <li><b>내 업무와 상관없는 청구서·계산서</b>는 열어 보지 말고 담당 부서로 문의합니다. 호기심이 가장 큰 미끼입니다.</li>
+    <li>"가산세", "법정 의무", "5일 이내" 같은 <b>법·세금 용어로 겁을 주는 메일</b>일수록 한 번 더 의심합니다.</li>
+    <li><b>보낸사람 실제 주소</b>를 꼭 확인합니다. 정부 기관을 자처하면서 일반 도메인을 쓰면 가짜입니다.</li>
+    <li>이미 눌렀거나 비밀번호·개인정보를 입력했다면 <b>즉시 비밀번호를 바꾸고 전산 담당자에게 신고</b>합니다. 숨기면 피해가 커집니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>정부 기관이 아닌 발신 도메인</b> — 국세청 메일이라면 정부 공식 도메인에서 옵니다. <code>nts-etax-mail.com</code>처럼 기관 약자에 단어를 붙인 일반 도메인은 가짜입니다.",
+    "brand": "<b>국세청 로고·디자인 흉내</b> — 실제 훈련 메일은 국세청 홈페이지의 로고 이미지를 그대로 가져다 썼습니다. 로고와 색상은 누구나 복사할 수 있으므로 진짜라는 근거가 되지 않습니다. 게다가 전자세금계산서 발행 메일은 보통 <b>거래처(공급자)나 발행 대행 서비스</b>가 보내지, 국세청이 직접 보내지 않습니다.",
+    "amount": "<b>호기심을 부르는 큰 금액</b> — 빨간 글씨의 284만 원짜리 전기료 계산서를 보면 \"이게 뭐지?\" 하고 확인하고 싶어집니다. 내 업무와 상관없는 청구서라면 오히려 담당 부서(재무·총무)에 확인할 일입니다.",
+    "threat": "<b>없는 규정으로 겁주기</b> — \"5일 이내 미확인 시 가산세\"라고 하지만, 받는 쪽이 메일을 열어보지 않았다고 가산세가 붙는 제도는 없습니다. 법·세금 용어로 겁을 줘서 서두르게 만드는 수법입니다.",
+    "link": "<b>가짜 확인 페이지로 연결</b> — 버튼은 <b>국세청처럼 꾸민 가짜 주소</b>로 연결되도록 만들어져 있었습니다. 실제 공격이라면 이곳에서 인증서 비밀번호나 계정 정보를 입력하게 하거나, \"세금계산서 뷰어\"라며 악성 파일을 내려받게 합니다.",
+    "trust": "<b>안심시키는 문구</b> — \"진위 여부는 홈택스에서 확인하라\"는 말은 맞는 조언이지만, 이를 적어 두면 <b>\"정직한 메일\"이라는 인상</b>을 줘서 정작 버튼을 의심 없이 누르게 만듭니다. 확인하려면 메일 버튼이 아니라 주소창에 홈택스 주소를 직접 입력하세요."
+  },
+  "order": [
+    "sender",
+    "brand",
+    "amount",
+    "threat",
+    "link",
+    "trust"
+  ],
+  "quiz": [
+    {
+      "q": "\"국세청\"에서 세금계산서 발행 알림 메일이 왔습니다. 가장 안전한 확인 방법은?",
+      "opts": [
+        "메일의 \"즉시 확인\" 버튼을 누른다",
+        "주소창에 홈택스 주소를 직접 입력해 접속하거나 재무 담당 부서에 확인한다",
+        "메일에 답장해서 진짜인지 묻는다"
+      ],
+      "answer": 1,
+      "fb": "메일 속 버튼이 아니라 내가 직접 찾아간 공식 경로로 확인해야 안전합니다. 답장은 공격자에게 갑니다."
+    },
+    {
+      "q": "\"5일 이내 확인하지 않으면 가산세가 부과된다\"는 문구에 대한 올바른 생각은?",
+      "opts": [
+        "받는 쪽이 메일을 안 열었다고 가산세가 붙지는 않는다. 겁주기 수법이다",
+        "가산세는 무서우니 빨리 확인해야 한다",
+        "금액이 크면 진짜일 가능성이 높다"
+      ],
+      "answer": 0,
+      "fb": "기한과 불이익을 내세워 서두르게 만드는 것이 피싱의 대표적인 특징입니다."
+    },
+    {
+      "q": "메일 하단에 \"진위 여부는 홈택스에서 확인하세요\"라고 적혀 있습니다. 이 메일은 안전할까요?",
+      "opts": [
+        "그렇다, 확인 방법까지 알려주니 정직한 메일이다",
+        "문구가 있으면 버튼을 눌러도 된다",
+        "아니다, 안심시켜 버튼을 누르게 하려는 문구일 수 있다"
+      ],
+      "answer": 2,
+      "fb": "좋은 조언처럼 보이는 문구도 신뢰를 얻기 위한 장치일 수 있습니다. 홈택스는 직접 접속해서 확인하세요."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람 주소",
+    "brand": "국세청 상단 배너",
+    "amount": "빨간 금액",
+    "threat": "주황 안내상자",
+    "link": "파란 버튼",
+    "trust": "하단 진위 확인 문구"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>

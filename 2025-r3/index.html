@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2025년 3차 모의훈련 · 메일 용량 초과 안내 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+.mail-head .row > span:last-child { min-width: 0; word-break: break-all; }
+.bar { display: block; padding: 14px 22px; color: #fff; font-weight: bold; font-size: 18px; border-radius: 0; }
+.bar small { display: block; font-weight: normal; font-size: 12px; opacity: .85; }
+.mail-body { padding: 22px; }
+.mail-body h3 { margin: 0 0 12px; font-size: 20px; }
+.mail-body p { margin: 0 0 12px; }
+.box { border-radius: 8px; padding: 12px 16px; margin: 14px 0; }
+.box p, .box ul { margin: 4px 0; }
+.box ul { padding-left: 20px; }
+.box-y { background: #fff8e1; border-left: 4px solid #ffc107; }
+.box-o { background: #fff3e0; border-left: 4px solid #ff9800; color: #bf360c; }
+.box-b { background: #e3f2fd; border: 1px solid #bbdefb; color: #1565c0; }
+.kv { width: 100%; border-collapse: collapse; font-size: 14px; }
+.kv td { padding: 7px 4px; border-bottom: 1px solid #eee; vertical-align: top; }
+.kv td:first-child { width: 32%; font-weight: bold; }
+.red { color: #d32f2f; font-weight: bold; }
+.fakebtn { display: block; margin: 20px auto; background: var(--brand); color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; max-width: 360px; }
+.mail-foot { padding: 16px 22px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.mail-foot p { margin: 0 0 6px; }
+.fakebtn.flag.found { background: #a33a0a !important; }
+.bar.flag { outline-offset: -3px; border-radius: 0; }
+.rules code { font-size: 13px; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h2>1. 2025년 3차 모의훈련 메일입니다 <span class="counter" id="flagCounter">0 / 7</span></h2>
+  <p class="lead">2025년 3차 모의훈련에서 발송한 메일을 재현했습니다(받는 사람은 홍길동으로, 보낸사람 주소·링크는 교육용 예시로 바꿈).
+    수상한 곳을 <b>직접 클릭</b>해 7군데를 모두 찾아보세요.</p>
+
+  <div class="mail">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span><span class="flag" data-flag="sender">IT지원팀 &lt;support@kunwoneng-mail.co.kr&gt;<span class="badge">!</span></span></div>
+      <div class="row"><span class="k">받는사람</span><span>honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span><span class="flag" data-flag="subject">[긴급] 이메일 용량 초과 - 즉시 확인 필요<span class="badge">!</span></span></div>
+    </div>
+    <div class="bar" style="background:#0066cc">[긴급] 이메일 용량 초과 - 즉시 확인 필요</div>
+    <div class="mail-body">
+      <p><b>안녕하세요, 홍길동님</b></p>
+      <p>귀하의 회사 이메일 계정이 할당된 저장 용량의 <b>98%</b>에 도달했습니다.</p>
+      <div class="box box-y"><div class="flag" data-flag="threat"><b style="color:#856404">⚠ 즉시 조치가 필요합니다</b><p>용량 초과 시 다음과 같은 문제가 발생할 수 있습니다:</p><ul><li>새로운 이메일 수신 불가</li><li>파일 첨부 불가능</li><li>시스템 접근 제한</li></ul><span class="badge">!</span></div></div>
+      <p><b>해결 방법:</b><br><span class="flag" data-flag="method">아래 링크를 클릭하여 계정을 확인하고 불필요한 파일을 삭제하세요.<span class="badge">!</span></span></p>
+      <span class="fakebtn flag" data-flag="link" style="background:#007bff" title="실제 링크: 메일 시스템과 무관한 가짜 주소">🔗 지금 확인하기<span class="badge">!</span></span>
+      <p><span class="flag" data-flag="deadline"><i class="red">*본 작업은 보안을 위해 24시간 내에 완료되어야 합니다.*</i><span class="badge">!</span></span></p>
+      <p>문의사항이 있으시면 IT지원팀(02-XXXX-XXXX)으로 연락해주세요.</p>
+      <p style="border-top:1px solid #eee;padding-top:12px;color:#555">감사합니다.<br>
+        <span class="flag" data-flag="signature"><b>IT지원팀</b><br>㈜건원엔지니어링<br>support@kunwoneng.co.kr<span class="badge">!</span></span></p>
+    </div>
+    <div class="mail-foot"><p>본 이메일은 시스템에서 자동으로 발송되었습니다.</p><p>※ 본 메일은 발송 전용이므로 회신하지 마시기 바랍니다.</p></div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li><b>메일 용량·계정 관련 안내는 메일 속 링크가 아니라</b> 평소 쓰는 메일 프로그램이나 사내 시스템에서 직접 확인합니다.</li>
+    <li><b>보낸사람과 서명의 도메인</b>이 회사 공식 도메인(<code>kunwoneng.com</code>)과 한 글자라도 다르면 의심합니다.</li>
+    <li><b>메일에 적힌 전화번호로 확인하지 않습니다.</b> 사내 연락망에서 직접 찾은 번호로 전산 담당자에게 문의합니다.</li>
+    <li>이미 눌렀거나 비밀번호·개인정보를 입력했다면 <b>즉시 비밀번호를 바꾸고 전산 담당자에게 신고</b>합니다. 숨기면 피해가 커집니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>회사와 다른 발신 도메인</b> — 우리 회사 메일은 <code>@kunwoneng.com</code>을 씁니다. <code>kunwoneng-mail.co.kr</code>처럼 단어를 덧붙이거나 끝(.com → .co.kr)을 바꾼 주소는 회사를 흉내 낸 가짜입니다.",
+    "subject": "<b>[긴급] 제목</b> — 제목부터 \"[긴급]\", \"즉시 확인 필요\"를 붙여 내용을 따져볼 틈 없이 열고 누르게 만듭니다. 진짜 시스템 공지는 이렇게 다급하게 쓰지 않습니다.",
+    "threat": "<b>업무 마비로 겁주기</b> — \"메일 수신 불가\", \"첨부 불가\", \"시스템 접근 제한\"을 나열해 업무가 멈출 것 같은 불안감을 줍니다. 실제로 용량이 차면 메일 프로그램 자체에 경고가 뜹니다.",
+    "method": "<b>이상한 해결 방법</b> — 메일함 정리는 평소 쓰는 메일 프로그램에서 직접 하면 됩니다. \"링크를 눌러 계정을 확인\"하라는 것은 용량 문제와 관계없이 <b>로그인 정보를 입력하게 하려는 것</b>입니다.",
+    "link": "<b>메일 시스템과 무관한 링크</b> — \"지금 확인하기\" 버튼은 회사 메일 시스템이 아닌 <b>엉뚱한 외부 주소</b>로 연결되도록 만들어져 있었습니다. 실제 공격이라면 메일 로그인 화면을 흉내 낸 페이지에서 비밀번호를 빼 갑니다.",
+    "deadline": "<b>24시간 기한</b> — 기한을 정해 두면 사람은 의심보다 처리를 먼저 하게 됩니다. \"보안을 위해\"라는 말로 오히려 보안을 무너뜨리려는 문장입니다.",
+    "signature": "<b>서명 속 주소도 회사 것이 아님</b> — 서명에 \"㈜건원엔지니어링\"이라고 적었지만 주소는 <code>kunwoneng.co.kr</code>로, 회사 공식 도메인(<code>kunwoneng.com</code>)과 다릅니다. 메일에 적힌 전화번호로 확인하는 것도 위험합니다. 번호까지 공격자가 정할 수 있으니 <b>사내 연락망에서 직접 찾은 번호</b>로 확인하세요."
+  },
+  "order": [
+    "sender",
+    "subject",
+    "threat",
+    "method",
+    "link",
+    "deadline",
+    "signature"
+  ],
+  "quiz": [
+    {
+      "q": "\"메일 용량이 98% 찼으니 링크를 눌러 계정을 확인하라\"는 메일이 왔습니다. 올바른 행동은?",
+      "opts": [
+        "링크를 눌러 로그인한 뒤 파일을 지운다",
+        "링크는 무시하고 평소 쓰는 메일 프로그램에서 직접 용량을 확인한다",
+        "모든 메일을 급히 삭제한다"
+      ],
+      "answer": 1,
+      "fb": "용량 확인과 정리는 메일 프로그램에서 직접 할 수 있습니다. 링크로 로그인을 요구하면 피싱을 의심하세요."
+    },
+    {
+      "q": "서명에 \"support@kunwoneng.co.kr\"이 적혀 있습니다. 회사 공식 도메인이 kunwoneng.com이라면?",
+      "opts": [
+        "회사 이름이 들어 있으니 같은 회사 주소다",
+        ".co.kr이 더 공식적인 주소다",
+        "끝부분이 다르므로 회사를 흉내 낸 다른 주소다"
+      ],
+      "answer": 2,
+      "fb": ".com과 .co.kr은 완전히 다른 주소입니다. 회사 이름이 들어 있어도 끝까지 확인해야 합니다."
+    },
+    {
+      "q": "메일에 적힌 IT지원팀 번호로 전화해 진짜인지 확인하려고 합니다. 괜찮을까요?",
+      "opts": [
+        "안 된다, 사내 연락망에서 직접 찾은 번호로 확인해야 한다",
+        "괜찮다, 메일에 적힌 번호니 정확하다",
+        "전화 대신 메일에 답장하면 된다"
+      ],
+      "answer": 0,
+      "fb": "피싱 메일 속 번호와 답장 주소는 공격자가 정한 것일 수 있습니다. 확인은 항상 내가 아는 경로로 합니다."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람 주소",
+    "subject": "제목",
+    "threat": "노란 경고상자",
+    "method": "해결 방법 문장",
+    "link": "파란 버튼",
+    "deadline": "빨간 기한 문장",
+    "signature": "하단 서명"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>

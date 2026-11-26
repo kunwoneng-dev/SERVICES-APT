@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2026년 9차 모의훈련 교육 · LinkedIn 사칭 피싱</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Malgun Gothic', '맑은 고딕', -apple-system, sans-serif;
+    margin: 0; background: #f3f2ef; color: #1f2328; line-height: 1.6;
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 16px 60px; }
+
+  /* 헤더 */
+  header {
+    background: linear-gradient(120deg, #0a66c2 0%, #084d92 100%);
+    color: #fff; padding: 34px 24px; text-align: center;
+  }
+  header .tag {
+    display: inline-block; background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.3);
+    padding: 4px 14px; border-radius: 20px; font-size: 12.5px; letter-spacing: .5px; margin-bottom: 12px;
+  }
+  header h1 { margin: 0 0 8px; font-size: 25px; letter-spacing: -0.6px; }
+  header p { margin: 0; font-size: 14.5px; opacity: .92; }
+
+  /* 단계 표시기 (스텝퍼) */
+  .stepper {
+    background: #fff; border-radius: 12px; padding: 16px 14px; margin: -26px auto 26px;
+    box-shadow: 0 6px 22px rgba(10,50,100,.10); position: relative; z-index: 2;
+    display: flex; justify-content: space-between; align-items: flex-start;
+  }
+  .stepper .st { flex: 1; text-align: center; position: relative; }
+  .stepper .st::before {
+    content: ""; position: absolute; top: 15px; left: -50%; width: 100%; height: 3px; background: #e6e9ec; z-index: 0;
+  }
+  .stepper .st:first-child::before { display: none; }
+  .stepper .st.done::before { background: #12805c; }
+  .stepper .dot {
+    width: 32px; height: 32px; border-radius: 50%; background: #e6e9ec; color: #8a929c;
+    font-size: 14px; font-weight: bold; line-height: 32px; margin: 0 auto 6px; position: relative; z-index: 1;
+    transition: all .25s;
+  }
+  .stepper .st.active .dot { background: #f15a22; color: #fff; box-shadow: 0 0 0 4px rgba(241,90,34,.18); }
+  .stepper .st.done .dot { background: #12805c; color: #fff; }
+  .stepper .st.done .dot::after { content: "✓"; }
+  .stepper .st.done .dot span { display: none; }
+  .stepper .caption { font-size: 11.5px; color: #8a929c; line-height: 1.35; padding: 0 3px; }
+  .stepper .st.active .caption { color: #f15a22; font-weight: bold; }
+  .stepper .st.done .caption { color: #12805c; }
+
+  .card {
+    background: #fff; border-radius: 14px; padding: 26px; box-shadow: 0 2px 10px rgba(0,0,0,.05);
+  }
+  .step-section { display: none; animation: fade .3s ease; }
+  .step-section.on { display: block; }
+  @keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+  .step-no {
+    display: inline-block; background: #f15a22; color: #fff; font-size: 12px; font-weight: bold;
+    padding: 3px 11px; border-radius: 20px; margin-bottom: 12px;
+  }
+  .card h2 { margin: 0 0 6px; font-size: 20px; letter-spacing: -0.4px; }
+  .card .lead { margin: 0 0 18px; font-size: 14px; color: #55606a; }
+
+  /* STEP1 진행 상태 바 */
+  .progress-box {
+    background: #fafbfc; border: 1px solid #eef0f2; border-radius: 10px; padding: 14px 18px; margin: 0 0 18px;
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  }
+  .progress-box .label { font-size: 14px; font-weight: bold; color: #0a66c2; }
+  .progress-box .sub { font-size: 12.5px; color: #6a7280; }
+  .bar { flex: 1 1 180px; height: 12px; background: #e6e9ec; border-radius: 8px; overflow: hidden; min-width: 150px; }
+  .bar > span { display: block; height: 100%; width: 0; background: linear-gradient(90deg,#f15a22,#ff8a5c); transition: width .4s ease; }
+
+  /* 모의 이메일 */
+  .mail-client { border: 1px solid #dfe3e8; border-radius: 12px; overflow: hidden; }
+  .mail-head { background: #fafbfc; border-bottom: 1px solid #eceff2; padding: 14px 18px; font-size: 13px; }
+  .mail-head .row { display: flex; gap: 8px; margin: 3px 0; }
+  .mail-head .k { color: #8a929c; width: 62px; flex-shrink: 0; }
+  .mail-head .v { color: #2b2f36; }
+  .mail-body { padding: 22px; background: #fff; font-size: 14px; }
+
+  .hs {
+    position: relative; cursor: pointer; border-radius: 4px;
+    outline: 2px dashed rgba(241,90,34,.55); outline-offset: 2px; transition: background .2s;
+  }
+  .hs:hover { background: rgba(241,90,34,.10); }
+  .hs.found { outline: 2px solid #12805c; background: rgba(18,128,92,.10); cursor: default; }
+  .hs .pin {
+    position: absolute; top: -11px; right: -11px; width: 22px; height: 22px; border-radius: 50%;
+    background: #f15a22; color: #fff; font-size: 12px; font-weight: bold; text-align: center; line-height: 22px;
+    box-shadow: 0 2px 5px rgba(0,0,0,.25);
+  }
+  .hs.found .pin { background: #12805c; }
+  .hs.found .pin::after { content: "✓"; }
+  .hs.found .pin .n { display: none; }
+
+  .li-logo { font-size: 20px; font-weight: bold; color: #000; letter-spacing: -0.5px; }
+  .li-logo .in { background: #0a66c2; color: #fff; padding: 1px 6px; border-radius: 3px; margin-left: 1px; font-size: 17px; }
+  .conn-card { border: 1px solid #e0dfdc; border-radius: 10px; padding: 16px; margin: 16px 0; }
+  .avatar { width: 48px; height: 48px; border-radius: 50%; background: #0a66c2; color: #fff; text-align: center; line-height: 48px; font-weight: bold; font-size: 17px; }
+  .cta-btn { display: inline-block; background: #0a66c2; color: #fff; padding: 9px 26px; border-radius: 22px; font-size: 14px; font-weight: bold; }
+  .msg-quote { border-left: 3px solid #0a66c2; padding: 4px 0 4px 12px; margin: 12px 0; color: #3f3f3f; font-size: 13.5px; }
+  .view-note { border: 1px solid #e0dfdc; border-radius: 10px; padding: 12px 16px; margin: 14px 0; font-size: 13.5px; }
+
+  /* 리빌 모달 */
+  /* iframe 자동 높이 환경: fixed 대신 문서 흐름 기준 absolute, 클릭한 위치 바로 아래에 표시 */
+  body { position: relative; }
+  .overlay {
+    position: absolute; inset: 0; background: rgba(15,25,40,.55); display: none; z-index: 50;
+  }
+  .overlay.on { display: block; }
+  .reveal {
+    position: absolute; left: 16px; right: 16px; margin: 0 auto;
+    background: #fff; border-radius: 14px; max-width: 440px; padding: 26px;
+    box-shadow: 0 18px 50px rgba(0,0,0,.3); animation: pop .22s ease;
+  }
+  @keyframes pop { from { transform: scale(.94); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+  .reveal .rtag { display: inline-block; background: #fdece4; color: #d1481a; font-size: 12px; font-weight: bold; padding: 4px 12px; border-radius: 20px; margin-bottom: 12px; }
+  .reveal h3 { margin: 0 0 10px; font-size: 18px; }
+  .reveal p { margin: 0 0 14px; font-size: 14px; color: #454d56; }
+  .reveal button {
+    background: #0a66c2; color: #fff; border: 0; padding: 11px 22px; border-radius: 8px;
+    font-size: 14px; font-weight: bold; cursor: pointer; width: 100%;
+  }
+
+  /* 도메인 비교 */
+  .dom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 560px) { .dom-grid { grid-template-columns: 1fr; } }
+  .dom { border-radius: 12px; padding: 18px; border: 2px solid; }
+  .dom.real { border-color: #12805c; background: #f0faf5; }
+  .dom.fake { border-color: #d1481a; background: #fdf3ef; }
+  .dom .dt { font-size: 12.5px; font-weight: bold; margin-bottom: 8px; }
+  .dom.real .dt { color: #12805c; }
+  .dom.fake .dt { color: #d1481a; }
+  .dom .dv { font-family: 'Consolas','D2Coding',monospace; font-size: 16px; word-break: break-all; }
+  .dom .dv b { padding: 1px 3px; border-radius: 3px; }
+  .dom.real .dv b { background: #bff0d8; }
+  .dom.fake .dv b { background: #ffd0bd; color: #b23616; }
+  .dom .dn { font-size: 12.5px; color: #55606a; margin-top: 8px; }
+
+  /* 퀴즈 */
+  .q { margin-bottom: 22px; padding-bottom: 22px; border-bottom: 1px solid #eef0f2; }
+  .q:last-child { border-bottom: 0; margin-bottom: 0; padding-bottom: 0; }
+  .q .qq { font-weight: bold; font-size: 15px; margin-bottom: 12px; }
+  .q .qq span { color: #f15a22; }
+  .opt {
+    display: block; border: 1.5px solid #e0e4e8; border-radius: 10px; padding: 12px 15px; margin-bottom: 9px;
+    cursor: pointer; font-size: 14px; transition: all .15s;
+  }
+  .opt:hover { border-color: #0a66c2; background: #f5f9fd; }
+  .opt.correct { border-color: #12805c; background: #eefaf3; color: #0d6247; font-weight: bold; }
+  .opt.wrong { border-color: #d1481a; background: #fdf1ec; color: #b23616; }
+  .opt.disabled { pointer-events: none; }
+  .qfb { font-size: 13px; margin-top: 8px; padding: 10px 13px; border-radius: 8px; display: none; }
+  .qfb.show { display: block; }
+  .qfb.ok { background: #eefaf3; color: #0d6247; }
+  .qfb.no { background: #fdf1ec; color: #b23616; }
+
+  /* 아코디언 */
+  .acc { border: 1px solid #e6e9ec; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+  .acc summary {
+    list-style: none; cursor: pointer; padding: 15px 18px; font-weight: bold; font-size: 14.5px;
+    display: flex; justify-content: space-between; align-items: center; background: #fafbfc;
+  }
+  .acc summary::-webkit-details-marker { display: none; }
+  .acc summary .plus { color: #0a66c2; font-size: 20px; transition: transform .2s; }
+  .acc[open] summary .plus { transform: rotate(45deg); }
+  .acc .body { padding: 4px 18px 18px; font-size: 13.5px; color: #454d56; }
+
+  .done-banner {
+    display: none; text-align: center; background: linear-gradient(120deg,#12805c,#0d6247); color: #fff;
+    border-radius: 12px; padding: 20px; margin: 18px 0 0;
+  }
+  .done-banner.on { display: block; animation: pop .3s ease; }
+  .done-banner h3 { margin: 0 0 4px; color: #fff; font-size: 17px; }
+  .done-banner p { margin: 0; font-size: 13.5px; }
+
+  /* 네비게이션 버튼 */
+  .nav {
+    display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    margin-top: 24px; padding-top: 20px; border-top: 1px solid #eef0f2;
+  }
+  .btn {
+    border: 0; border-radius: 24px; padding: 12px 28px; font-size: 14.5px; font-weight: bold; cursor: pointer;
+    font-family: inherit; transition: all .15s;
+  }
+  .btn-next { background: #0a66c2; color: #fff; }
+  .btn-next:hover { background: #084d92; }
+  .btn-prev { background: #eef0f2; color: #55606a; }
+  .btn-prev:hover { background: #e2e6ea; }
+  .btn:disabled { opacity: .4; cursor: not-allowed; }
+  .nav .spacer { flex: 1; }
+
+  .final {
+    text-align: center; background: linear-gradient(120deg,#12805c,#0d6247); color: #fff;
+    border-radius: 12px; padding: 30px 22px; margin-bottom: 22px;
+  }
+  .final h2 { margin: 0 0 8px; color: #fff; }
+  .final p { margin: 0; opacity: .95; }
+  .final .restart {
+    display: inline-block; margin-top: 16px; background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.4);
+    color: #fff; padding: 10px 22px; border-radius: 22px; font-size: 14px; font-weight: bold; cursor: pointer;
+  }
+
+  footer { text-align: center; font-size: 12px; color: #97a0aa; padding: 18px 10px 0; }
+  .hint { font-size: 12.5px; color: #8a929c; margin-top: 10px; }
+  .acc-count { font-weight: bold; color: #f15a22; }
+  .all-done { display: none; margin-top: 18px; background: #eefaf3; border: 1px solid #b2f2bb; color: #0d6247;
+    border-radius: 12px; padding: 14px 18px; font-weight: bold; text-align: center; }
+  .all-done.on { display: block; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="tag">2026년 9차 악성메일 모의훈련 · 사후 교육</div>
+  <h1>이 LinkedIn 메일, 진짜일까요?</h1>
+  <p>4단계로 진행하며 피싱 메일을 직접 뜯어봅니다.</p>
+</header>
+
+<div class="wrap">
+
+  <!-- 스텝퍼 -->
+  <div class="stepper" id="stepper">
+    <div class="st" data-s="0"><div class="dot"><span>1</span></div><div class="caption">위험신호 찾기</div></div>
+    <div class="st" data-s="1"><div class="dot"><span>2</span></div><div class="caption">도메인 비교</div></div>
+    <div class="st" data-s="2"><div class="dot"><span>3</span></div><div class="caption">확인 퀴즈</div></div>
+    <div class="st" data-s="3"><div class="dot"><span>4</span></div><div class="caption">기억할 수칙</div></div>
+  </div>
+
+  <div class="card">
+
+    <!-- STEP 1 -->
+    <div class="step-section on" data-step="0">
+      <span class="step-no">STEP 1 / 4</span>
+      <h2>메일 속 위험신호 찾기</h2>
+      <p class="lead">아래는 9차 훈련에서 발송된 실제 메일입니다. 겉보기엔 평범한 LinkedIn 알림이지만 곳곳에 단서가 숨어 있습니다. <b>주황색 점선 영역</b>을 클릭하면 무엇이 문제인지 설명이 나타납니다.</p>
+
+      <div class="progress-box">
+        <div>
+          <div class="label" id="pLabel">위험신호 0 / 7 찾음</div>
+          <div class="sub">7개를 모두 찾으면 다음 단계로 넘어갈 수 있습니다.</div>
+        </div>
+        <div class="bar"><span id="pBar"></span></div>
+      </div>
+
+      <div class="mail-client">
+        <div class="mail-head">
+          <div class="row"><span class="k">보낸사람</span><span class="v">LinkedIn &lt;<span class="hs" data-id="0">invitations@linkedln-mail.com<span class="pin"><span class="n">1</span></span></span>&gt;</span></div>
+          <div class="row"><span class="k">받는사람</span><span class="v">홍길동 &lt;honggildong@kunwoneng.com&gt;</span></div>
+          <div class="row"><span class="k">제목</span><span class="v">David Koh님이 회원님을 팔로우하고 연락처(명함)를 공유했습니다</span></div>
+        </div>
+        <div class="mail-body">
+          <div class="hs" data-id="1" style="display:inline-block;">
+            <span class="li-logo">Linked<span class="in">in</span></span>
+            <span class="pin"><span class="n">2</span></span>
+          </div>
+
+          <p style="margin:16px 0;">홍길동님, 안녕하세요.<br>회원님과 같은 업계(엔지니어링·건설)의 전문가가 회원님을 팔로우하고 <b>연락처(디지털 명함)</b>를 공유했습니다.</p>
+
+          <div class="conn-card">
+            <div class="hs" data-id="2" style="display:flex; gap:12px; align-items:flex-start;">
+              <div class="avatar">DK</div>
+              <div>
+                <div style="font-weight:bold;">David Koh (고동현)</div>
+                <div style="font-size:13px; color:#5f5f5f;">Data Center Development Director · Hyunwoo E&amp;C International</div>
+                <div style="font-size:12px; color:#8a8a8a; margin-top:4px;">공통 인맥 3명 · 같은 그룹 Korea Engineering Network</div>
+              </div>
+              <span class="pin"><span class="n">3</span></span>
+            </div>
+
+            <div class="msg-quote hs" data-id="3">
+              💬 새 메시지(InMail): "홍길동님, 저희가 진행 중인 <b>UAE AI 데이터센터 프로젝트</b>의 국내 설계 파트너를 검토하던 중 건원엔지니어링의 실적을 보고 연락드립니다. 협업 논의를 위해 회사 소개서와 명함을 공유드렸습니다…"
+              <span class="pin"><span class="n">4</span></span>
+            </div>
+
+            <div style="margin-top:14px;">
+              <span class="hs" data-id="4" style="display:inline-block;">
+                <span class="cta-btn">수락하고 메시지 보기</span>
+                <span class="pin"><span class="n">5</span></span>
+              </span>
+            </div>
+          </div>
+
+          <div class="view-note hs" data-id="5">
+            이번 주 회원님의 프로필이 <b style="color:#0a66c2;">17회</b> 조회되었습니다. 조회한 사람 중 4명이 채용·프로젝트 담당자입니다.
+            <span class="pin"><span class="n">6</span></span>
+          </div>
+
+          <p class="hs" data-id="6" style="font-size:12.5px; color:#8a8a8a; display:inline-block;">
+            이 메시지를 놓치면 상대방에게 <b>7일 후 만료</b>로 표시됩니다. 부담 없이 확인하세요.
+            <span class="pin"><span class="n">7</span></span>
+          </p>
+        </div>
+      </div>
+      <p class="hint">💡 팁: 실제 메일에서는 링크에 마우스를 올리면(클릭하지 말고) 하단에 진짜 이동 주소가 표시됩니다.</p>
+
+      <div class="done-banner" id="doneBanner">
+        <h3>🎉 위험신호 7개를 모두 찾았습니다!</h3>
+        <p>이 정도 관찰력이면 실제 피싱도 걸러낼 수 있습니다. 다음 단계로 넘어가세요.</p>
+      </div>
+
+      <div class="nav">
+        <div class="spacer"></div>
+        <button class="btn btn-next" id="next0" disabled>다음 단계 →</button>
+      </div>
+    </div>
+
+    <!-- STEP 2 -->
+    <div class="step-section" data-step="1">
+      <span class="step-no">STEP 2 / 4</span>
+      <h2>핵심 단서: 도메인 한 글자</h2>
+      <p class="lead">모든 위험신호의 결정적 증거는 <b>발신 주소의 '@' 뒷부분(도메인)</b>입니다. 진짜와 가짜를 나란히 비교해 보세요.</p>
+      <div class="dom-grid">
+        <div class="dom real">
+          <div class="dt">✓ 진짜 LinkedIn</div>
+          <div class="dv">linked<b>i</b>n.com</div>
+          <div class="dn">공식 알림은 @linkedin.com 또는 @e.linkedin.com 에서만 발송됩니다.</div>
+        </div>
+        <div class="dom fake">
+          <div class="dt">✕ 이번 훈련 메일 (가짜)</div>
+          <div class="dv">linked<b>l</b>n-mail.com</div>
+          <div class="dn">알파벳 'i(아이)'를 'l(엘)'로 바꿔치기한 <b>타이포스쿼팅</b>. 한 글자 차이라 놓치기 쉽습니다.</div>
+        </div>
+      </div>
+      <p style="margin:16px 0 0; font-size:13.5px; color:#55606a; background:#fafbfc; border-left:3px solid #f15a22; padding:12px 15px; border-radius:6px;">
+        발송명(LinkedIn)과 메일 제목의 브랜드명은 <b>누구나 임의로 설정</b>할 수 있습니다. 진위 판단의 유일한 기준은 도메인입니다.
+      </p>
+      <div class="nav">
+        <button class="btn btn-prev" data-prev>← 이전</button>
+        <div class="spacer"></div>
+        <button class="btn btn-next" data-next>다음 단계 →</button>
+      </div>
+    </div>
+
+    <!-- STEP 3 -->
+    <div class="step-section" data-step="2">
+      <span class="step-no">STEP 3 / 4</span>
+      <h2>확인 퀴즈</h2>
+      <p class="lead">배운 내용을 확인해 보세요. 4문항을 모두 풀면 마지막 단계로 넘어갑니다.</p>
+      <div id="quiz"></div>
+      <div class="progress-box" style="margin:18px 0 0;">
+        <div class="label" id="qScore">퀴즈 0 / 4 정답</div>
+        <div class="bar"><span id="qBar"></span></div>
+      </div>
+      <div class="nav">
+        <button class="btn btn-prev" data-prev>← 이전</button>
+        <div class="spacer"></div>
+        <button class="btn btn-next" id="next2" disabled>다음 단계 →</button>
+      </div>
+    </div>
+
+    <!-- STEP 4 -->
+    <div class="step-section" data-step="3">
+      <div class="final">
+        <h2>🛡️ 교육을 마쳤습니다</h2>
+        <p>마지막으로, 실무에서 기억할 5가지 수칙입니다.</p>
+      </div>
+      <p class="lead">항목을 눌러 상세 내용을 확인하세요. <span class="acc-count" id="accCount">0 / 5</span></p>
+
+      <details class="acc"><summary>① 도메인의 '@' 뒷부분을 한 글자씩 확인 <span class="plus">+</span></summary>
+        <div class="body">LinkedIn 공식 알림은 반드시 @linkedin.com(또는 @e.linkedin.com)에서 발송됩니다. 'linkedln-mail.com'처럼 한 글자가 다른 도메인은 모두 가짜입니다.</div></details>
+
+      <details class="acc"><summary>② 메일 버튼 대신 앱·즐겨찾기로 직접 접속 <span class="plus">+</span></summary>
+        <div class="body">인맥 요청·메시지·명함은 이메일 버튼이 아니라 평소 쓰던 링크드인 앱이나 즐겨찾기(linkedin.com)로 직접 접속해 확인하세요. 메일 속 버튼으로 로그인 페이지에 들어가 계정을 입력하지 마십시오.</div></details>
+
+      <details class="acc"><summary>③ '좋은 기회'일수록 더 침착하게 <span class="plus">+</span></summary>
+        <div class="body">"좋은 프로젝트 제안", "명함을 공유했습니다", "프로필 조회 17회" 등 호기심·기대감을 자극하는 메일일수록 발신 도메인과 링크를 먼저 확인하세요. 위협이 없다고 안전한 것이 아닙니다 — 오히려 경계심이 낮아져 더 잘 속습니다.</div></details>
+
+      <details class="acc"><summary>④ 외부 서비스 비밀번호를 사내 계정과 다르게 <span class="plus">+</span></summary>
+        <div class="body">링크드인 등 외부 서비스 비밀번호를 사내 메일·그룹웨어 비밀번호와 동일하게 쓰지 마세요. 외부 계정 하나가 뚫리면 사내 계정까지 연쇄 탈취될 수 있습니다.</div></details>
+
+      <details class="acc"><summary>⑤ '나를 아는 것 같은' 정보에 방심하지 않기 <span class="plus">+</span></summary>
+        <div class="body">공통 인맥·같은 그룹·회사명 언급 등은 공개 프로필이나 이전 유출로 누구나 수집·삽입할 수 있습니다. 개인화된 정보가 있다고 안전한 메일이 아닙니다.</div></details>
+
+      <div class="nav">
+        <button class="btn btn-prev" data-prev>← 이전</button>
+        <div class="spacer"></div>
+        <button class="btn btn-next" id="restart">처음부터 다시 ↺</button>
+      </div>
+      <div class="all-done" id="allDone">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+    </div>
+
+  </div>
+
+  <footer>건원엔지니어링 정보보안 · 2026년 9차 악성메일 모의훈련 교육자료 · 본 메일은 훈련용 모의 메일입니다</footer>
+</div>
+
+<!-- 리빌 모달 -->
+<div class="overlay" id="overlay">
+  <div class="reveal">
+    <span class="rtag" id="rTag"></span>
+    <h3 id="rTitle"></h3>
+    <p id="rBody"></p>
+    <button onclick="closeReveal()">확인</button>
+  </div>
+</div>
+
+<script src="../common/v1/edu-bridge.js"></script>
+<script>
+  /* ---------- 단계 이동 ---------- */
+  var current = 0, TOTAL = 4;
+  var sections = document.querySelectorAll('.step-section');
+  var steps = document.querySelectorAll('.stepper .st');
+
+  function showStep(n){
+    current = n;
+    sections.forEach(function(s){ s.classList.toggle('on', +s.getAttribute('data-step') === n); });
+    steps.forEach(function(st){
+      var i = +st.getAttribute('data-s');
+      st.classList.toggle('active', i === n);
+      st.classList.toggle('done', i < n);
+    });
+    try { document.getElementById('stepper').scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+  }
+  document.querySelectorAll('[data-next]').forEach(function(b){
+    b.addEventListener('click', function(){ if (current < TOTAL-1) showStep(current+1); });
+  });
+  document.querySelectorAll('[data-prev]').forEach(function(b){
+    b.addEventListener('click', function(){ if (current > 0) showStep(current-1); });
+  });
+  document.getElementById('next0').addEventListener('click', function(){ if(!this.disabled) showStep(1); });
+  document.getElementById('next2').addEventListener('click', function(){ if(!this.disabled) showStep(3); });
+  document.getElementById('restart').addEventListener('click', function(){ showStep(0); });
+  // 스텝퍼 클릭으로 이미 지난 단계로 되돌아가기 허용
+  steps.forEach(function(st){
+    st.addEventListener('click', function(){
+      var i = +st.getAttribute('data-s');
+      if (i <= current || st.classList.contains('done')) showStep(i);
+    });
+  });
+
+  /* ---------- STEP1: 위험신호 ---------- */
+  var SPOTS = [
+    { tag:"피싱 요소 · 가짜 도메인", title:"발신 도메인이 가짜입니다", body:"'linkedln-mail.com'은 정품 도메인(linkedin.com)의 i를 l로 바꾼 타이포스쿼팅입니다. 발송명이 'LinkedIn'이라도 @ 뒷부분이 다르면 피싱입니다." },
+    { tag:"피싱 요소 · 브랜드 사칭", title:"익숙한 로고로 신뢰를 위장", body:"실제 LinkedIn 워드마크와 색상(#0a66c2)을 그대로 모방했습니다. 로고와 UI는 이미지·코드만 복사하면 되므로 진위의 근거가 될 수 없습니다." },
+    { tag:"피싱 요소 · 명함·인물 위장", title:"실존 인물처럼 꾸민 발신자", body:"이름·직책·회사·공통 인맥까지 그럴듯하게 구성했습니다. '명함 전체 보기'를 미끼로 로그인 페이지 클릭을 유도합니다. 실존 여부는 확인되지 않습니다." },
+    { tag:"피싱 요소 · 업무 기회 미끼", title:"공포 대신 '좋은 기회'로 유인", body:"UAE AI 데이터센터 협업이라는 매력적 제안으로 호기심을 자극합니다. 위협형보다 경계심이 낮아 오히려 클릭률이 높은 위험한 수법입니다." },
+    { tag:"피싱 요소 · 로그인 탈취", title:"가짜 로그인 페이지로 유도", body:"버튼의 실제 목적지는 linkedln-mail.com입니다. 링크드인 계정을 탈취하며, 같은 비밀번호를 사내 계정에 재사용하면 2차 피해로 번집니다." },
+    { tag:"피싱 요소 · 사회적 증거", title:"'프로필 17회 조회'로 궁금증 유발", body:"조회수·채용담당자 언급 등 사회적 증거로 '확인해봐야 한다'는 심리를 자극합니다. 수치는 얼마든지 조작할 수 있습니다." },
+    { tag:"피싱 요소 · 시간 압박", title:"약한 만료 압박으로 조급함 유발", body:"'7일 후 만료' 같은 낮은 강도의 시간 압박과 '부담 없이 확인하세요'라는 안심 문구를 결합해 방심한 클릭을 유도합니다." }
+  ];
+  var found = {}, foundCount = 0;
+  document.querySelectorAll('.hs').forEach(function(el){
+    el.addEventListener('click', function(){
+      var id = el.getAttribute('data-id');
+      if (!found[id]) {
+        found[id] = true; foundCount++;
+        el.classList.add('found');
+        document.getElementById('pLabel').textContent = '위험신호 ' + foundCount + ' / 7 찾음';
+        document.getElementById('pBar').style.width = (foundCount/7*100) + '%';
+        if (foundCount === 7) {
+          document.getElementById('doneBanner').classList.add('on');
+          document.getElementById('next0').disabled = false;
+        }
+      }
+      openReveal(SPOTS[id], el);
+    });
+  });
+  function openReveal(s, el){
+    document.getElementById('rTag').textContent = s.tag;
+    document.getElementById('rTitle').textContent = s.title;
+    document.getElementById('rBody').textContent = s.body;
+    var r = el.getBoundingClientRect();
+    var bodyTop = document.body.getBoundingClientRect().top;
+    document.querySelector('#overlay .reveal').style.top = Math.max(16, r.bottom - bodyTop + 14) + 'px';
+    document.getElementById('overlay').classList.add('on');
+  }
+  function closeReveal(){ document.getElementById('overlay').classList.remove('on'); }
+  document.getElementById('overlay').addEventListener('click', function(e){ if(e.target===this) closeReveal(); });
+
+  /* ---------- STEP3: 퀴즈 ---------- */
+  var QUIZ = [
+    { q:"이 메일이 진짜 LinkedIn인지 확인하는 가장 확실한 방법은?",
+      opts:["발송명이 'LinkedIn'인지 본다","로고와 디자인이 정교한지 본다","발신 주소의 '@' 뒷부분(도메인)을 확인한다","공통 인맥이 있는지 본다"],
+      a:2, fb:"발송명·로고·인맥 정보는 모두 조작 가능합니다. 유일하게 믿을 수 있는 기준은 도메인(@ 뒷부분)입니다." },
+    { q:"'linkedln-mail.com'이 가짜인 이유로 가장 정확한 것은?",
+      opts:["끝이 .com이라서","linkedin의 'i'를 'l'로 바꾼 타이포스쿼팅이라서","한글이 없어서","링크드인은 메일을 보내지 않아서"],
+      a:1, fb:"linked'i'n → linked'l'n. 한 글자만 바꿔 육안으로 놓치게 만드는 전형적 타이포스쿼팅 수법입니다." },
+    { q:"이런 '좋은 업무 기회' 메일이 협박형 피싱보다 위험할 수 있는 이유는?",
+      opts:["금액이 더 커서","위협이 없어 경계심이 낮아지기 때문","첨부파일이 있어서","해외에서 와서"],
+      a:1, fb:"공포가 없으면 오히려 방심합니다. 호기심·기대감을 미끼로 한 비위협형 피싱이 더 잘 통하는 이유입니다." },
+    { q:"이 메일의 내용을 안전하게 확인하려면?",
+      opts:["메일의 '수락' 버튼을 누른다","답장으로 상대에게 물어본다","링크드인 앱이나 즐겨찾기(linkedin.com)로 직접 접속한다","일단 로그인해서 확인한다"],
+      a:2, fb:"메일 속 버튼이 아니라, 평소 쓰던 앱·즐겨찾기로 직접 접속해 확인하는 것이 안전합니다." }
+  ];
+  var qCorrect = 0, qDone = {};
+  var qWrap = document.getElementById('quiz');
+  QUIZ.forEach(function(item, qi){
+    var d = document.createElement('div'); d.className = 'q';
+    var h = '<div class="qq"><span>Q'+(qi+1)+'.</span> '+item.q+'</div>';
+    item.opts.forEach(function(o, oi){ h += '<label class="opt" data-q="'+qi+'" data-o="'+oi+'">'+o+'</label>'; });
+    h += '<div class="qfb" id="fb'+qi+'"></div>';
+    d.innerHTML = h; qWrap.appendChild(d);
+  });
+  qWrap.querySelectorAll('.opt').forEach(function(op){
+    op.addEventListener('click', function(){
+      var qi = +op.getAttribute('data-q'), oi = +op.getAttribute('data-o');
+      if (qDone[qi]) return;
+      qDone[qi] = true;
+      var item = QUIZ[qi];
+      var opts = qWrap.querySelectorAll('.opt[data-q="'+qi+'"]');
+      opts.forEach(function(x){ x.classList.add('disabled'); });
+      var fb = document.getElementById('fb'+qi);
+      if (oi === item.a) {
+        op.classList.add('correct'); qCorrect++;
+        fb.className = 'qfb show ok'; fb.textContent = '정답입니다! ' + item.fb;
+      } else {
+        op.classList.add('wrong'); opts[item.a].classList.add('correct');
+        fb.className = 'qfb show no'; fb.textContent = '아쉽네요. ' + item.fb;
+      }
+      document.getElementById('qScore').textContent = '퀴즈 ' + qCorrect + ' / 4 정답';
+      document.getElementById('qBar').style.width = (Object.keys(qDone).length/4*100) + '%';
+      if (Object.keys(qDone).length === 4) document.getElementById('next2').disabled = false;
+    });
+  });
+  /* ---------- 부모(경고 페이지)와의 메시지 계약 ----------
+     edu-progress {done,total} / edu-complete / edu-resize {height}. 개인정보는 주고받지 않는다. */
+  var PARENT_TARGET_ORIGIN = '*';
+  var accOpened = {};
+  var ACC_TOTAL = document.querySelectorAll('details.acc').length;
+  var SPOT_TOTAL = SPOTS.length, QUIZ_TOTAL = QUIZ.length;
+  var EDU_TOTAL = SPOT_TOTAL + QUIZ_TOTAL + ACC_TOTAL;
+  var lastDone = -1, completeSent = false;
+
+  function post(data) {
+    try { if (window.parent && window.parent !== window) window.parent.postMessage(data, PARENT_TARGET_ORIGIN); } catch (e) {}
+  }
+  function reportHeight() {
+    post({ type: 'edu-resize', height: document.documentElement.scrollHeight });
+  }
+  function report() {
+    var accDone = Object.keys(accOpened).length;
+    var done = foundCount + Object.keys(qDone).length + accDone;
+    document.getElementById('accCount').textContent = accDone + ' / ' + ACC_TOTAL;
+    if (done !== lastDone) {
+      lastDone = done;
+      post({ type: 'edu-progress', done: done, total: EDU_TOTAL });
+    }
+    if (done >= EDU_TOTAL && !completeSent) {
+      completeSent = true;
+      document.getElementById('allDone').classList.add('on');
+      post({ type: 'edu-complete' });
+    }
+    reportHeight();
+  }
+
+  document.querySelectorAll('details.acc').forEach(function(d, i){
+    d.addEventListener('toggle', function(){
+      if (d.open) accOpened[i] = true;
+      report();
+    });
+  });
+  document.querySelectorAll('.hs, .opt, .btn, .stepper .st, .reveal button').forEach(function(el){
+    el.addEventListener('click', function(){ setTimeout(report, 0); });
+  });
+  document.getElementById('overlay').addEventListener('click', function(){ setTimeout(reportHeight, 0); });
+
+  report();
+  window.addEventListener('load', reportHeight);
+  if (window.ResizeObserver) new ResizeObserver(reportHeight).observe(document.body);
+  else setInterval(reportHeight, 1000);
+</script>
+</body>
+</html>

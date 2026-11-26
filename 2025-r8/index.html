@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2025년 8차 모의훈련 · 가상자산 거래소 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+.mail-head .v { min-width: 0; word-break: break-all; }
+.mail-banner { padding: 16px 22px; font-weight: bold; }
+.mail-banner small { display: block; font-weight: normal; font-size: 12px; opacity: .8; }
+.mail-body { padding: 24px 22px; }
+.mail-body p { margin: 0 0 12px; }
+.box { border-radius: 8px; padding: 14px 16px; margin: 14px 0; }
+.box h4 { margin: 0 0 8px; font-size: 15px; }
+.box ul { margin: 0; padding-left: 20px; }
+.box.warn { background: #fff3e0; border-left: 4px solid #ff9800; }
+.box.info { background: #e3f2fd; border: 1px solid #90caf9; }
+.box.gray { background: #f5f5f5; }
+.box.green { background: #e8f5e9; border: 2px solid #4caf50; text-align: center; }
+.red { color: #d32f2f; font-weight: bold; }
+.big { font-size: 26px; font-weight: bold; }
+.lurelink { color: #1a5fb4; text-decoration: underline; }
+.field { margin-top: 10px; }
+.field label { display: block; font-size: 13px; color: var(--sub); }
+.fakeinput { display: block; border: 1px solid #ccc; border-radius: 4px; padding: 9px 10px; color: #999; background: #fff; }
+.sig { font-size: 13px; color: var(--sub); border-top: 1px solid var(--line); padding-top: 12px; margin-top: 16px; }
+.fakebtn { display: block; margin-top: 22px; background: var(--brand); color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; }
+.mail-foot { padding: 16px 22px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.fakebtn.flag.found { background: #a33a0a; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h2>1. 2025년 8차 모의훈련 메일입니다 <span class="counter" id="flagCounter">0 / 6</span></h2>
+  <p class="lead">2025년 8차 모의훈련에서 발송된 메일을 재현했습니다(받는 사람 등 일부 정보는 바꿈).
+    수상한 곳을 <b>직접 클릭</b>해 6군데를 모두 찾아보세요.</p>
+
+  <div class="mail">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span><span class="v"><span class="flag" data-flag="sender">BitGet 고객센터 &lt;notice@bitget-asset-care.com&gt;<span class="badge">!</span></span></span></div>
+      <div class="row"><span class="k">받는사람</span><span class="v">honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span><span class="v">[BitGet] 보유 자산 소멸 예정 안내</span></div>
+    </div>
+    <div class="mail-body">
+      <p><span class="flag" data-flag="brand"># 안녕하세요. 「BitGet」거래소에서 안내드립니다.<span class="badge">!</span></span></p>
+      <p><span class="flag" data-flag="expire"># 회원님의 거래소 보유(<b>ETH 자산</b>)의 소멸 예정일에 <span class="red">2025년 12월 07일 (일)</span>에 다가와 안내드립니다.<span class="badge">!</span></span></p>
+      <p><span class="flag" data-flag="press"># 현재 SMS문자 및 E-mail을 통해 <b>3회이상안내</b>를 드렸습니다.<br># 상담직원을 통해 <span class="red">즉시 취소 요청</span> 바랍니다.<span class="badge">!</span></span></p>
+      <div class="box warn">
+        <h4 style="color:#856404">■수량 안내■</h4>
+        <span class="flag" data-flag="amount">※현재수량 : <b>38.4 E.t.h</b><br>※가격환산 : <span class="red">4,620,000원</span><span class="badge">!</span></span><br>
+        ※예정안내 : <b>12월 07일(일)</b>
+      </div>
+      <div class="box green">
+        <h4 style="color:#2e7d32">↓상담시작 안내↓</h4>
+        <div>담당자 : OOO cs</div>
+        <div style="margin-top:8px"><span class="lurelink flag" data-flag="link" title="단축 주소: 실제 목적지가 숨겨져 있음">alie.kr/CB5daK6<span class="badge">!</span></span></div>
+      </div>
+      <p style="font-size:13px;color:#666">※거래소를 이용해주시는 모든 회원님들께 감사드리며, 오늘도 좋은하루 보내시길 바랍니다.</p>
+    </div>
+    <div class="mail-foot">본 메일은 발신 전용 메일입니다. 문의사항은 고객센터를 이용해 주시기 바랍니다.</div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li><b>보낸사람은 표시 이름이 아니라 실제 주소</b>(&lt; &gt; 안)를 확인합니다. 금융·거래소 안내는 공식 도메인에서만 옵니다.</li>
+    <li><b>가입한 적 없는 서비스</b>에서 온 "자산 소멸", "환불", "보상" 안내는 열어 볼 필요 없이 신고합니다.</li>
+    <li><b>단축 주소(URL)는 누르지 않습니다.</b> 실제 목적지가 숨겨져 있어 피싱 사이트나 악성 앱으로 연결될 수 있습니다.</li>
+    <li>"상담원"이 메신저로 연락해 <b>송금, 앱 설치, 인증번호를 요구하면 즉시 대화를 끊고</b> 신고합니다. 이미 눌렀거나 정보를 입력했다면 <b>즉시 비밀번호를 바꾸고 전산 담당자에게 신고</b>합니다. 숨기면 피해가 커집니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>거래소와 무관한 발신 주소</b> — 거래소 이름을 붙였지만 공식 도메인이 아닌, 그럴듯하게 지어낸 외부 주소입니다.",
+    "brand": "<b>가입한 적 없는 서비스</b> — 회사 메일 주소로 해외 가상자산 거래소 안내가 왔습니다. 업무 메일로 가입한 적이 없다면 그 자체로 무차별 발송된 피싱입니다. 줄마다 붙은 \"#\" 기호와 어색한 문장도 공식 안내답지 않습니다.",
+    "expire": "<b>있을 수 없는 \"자산 소멸\"</b> — 거래소에 보관된 가상자산은 포인트처럼 기한이 지나 사라지지 않습니다. \"내 돈이 없어진다\"는 불안을 이용한 거짓말입니다.",
+    "press": "<b>이미 여러 번 알렸다는 압박</b> — \"3회 이상 안내했다\", \"즉시 취소 요청\"이라며 마치 내가 놓친 것처럼 느끼게 하고 상담원에게 서둘러 연락하게 만듭니다.",
+    "amount": "<b>앞뒤 안 맞는 숫자</b> — 38.4 ETH를 462만 원으로 환산했지만 실제 시세로는 억 단위가 넘습니다. \"E.t.h\"처럼 이상한 표기도 스팸 필터를 피하려는 흔한 수법입니다.",
+    "link": "<b>목적지를 숨긴 단축 주소</b> — <code>alie.kr/…</code> 같은 단축 URL은 눌러 보기 전까지 실제로 어디로 가는지 알 수 없습니다. \"상담직원\"과 연결해 메신저 대화로 끌어들인 뒤 송금, 원격제어 앱 설치, 인증번호 입력을 요구하는 것이 이런 사기의 전형입니다."
+  },
+  "order": [
+    "sender",
+    "brand",
+    "expire",
+    "press",
+    "amount",
+    "link"
+  ],
+  "quiz": [
+    {
+      "q": "가입한 적 없는 가상자산 거래소에서 \"보유 자산이 곧 소멸된다\"는 메일이 왔습니다. 어떻게 할까요?",
+      "opts": [
+        "혹시 모르니 상담원에게 연락해 본다",
+        "링크로 들어가 내 계정이 있는지 확인한다",
+        "열어 보지 말고 전산 담당자에게 신고한다"
+      ],
+      "answer": 2,
+      "fb": "가입한 적 없는 서비스의 안내는 무차별 발송된 피싱입니다. 확인하려고 접속하는 것 자체가 위험합니다."
+    },
+    {
+      "q": "메일에 alie.kr/… 같은 짧은 주소가 적혀 있습니다. 이런 단축 주소가 위험한 이유는?",
+      "opts": [
+        "실제로 연결되는 목적지가 숨겨져 있어서",
+        "주소가 짧아서 오타가 나기 쉬워서",
+        "국내 사이트라서"
+      ],
+      "answer": 0,
+      "fb": "단축 주소는 진짜 목적지를 가려 줍니다. 공식 기관·회사 안내는 보통 단축 주소를 쓰지 않습니다."
+    },
+    {
+      "q": "메일 속 \"상담직원\"과 연결되었더니 원격제어 앱 설치와 인증번호를 요구합니다. 올바른 대응은?",
+      "opts": [
+        "상담원이니 안내대로 따른다",
+        "즉시 대화를 끊고 신고한다",
+        "인증번호만 알려 주고 앱은 설치하지 않는다"
+      ],
+      "answer": 1,
+      "fb": "정상적인 금융·거래소 상담은 원격제어 앱 설치나 인증번호를 요구하지 않습니다. 하나라도 알려 주면 피해로 이어집니다."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람 주소",
+    "brand": "첫 인사 문장",
+    "expire": "소멸 예정일 안내",
+    "press": "3회 이상 안내 문장",
+    "amount": "수량·가격",
+    "link": "상담 연결 주소"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>

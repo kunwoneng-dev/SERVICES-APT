@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026년 1차 모의훈련 · 국세청 환급 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+.mail-head .v { min-width: 0; word-break: break-all; }
+.mail-banner { padding: 16px 22px; font-weight: bold; }
+.mail-banner small { display: block; font-weight: normal; font-size: 12px; opacity: .8; }
+.mail-body { padding: 24px 22px; }
+.mail-body p { margin: 0 0 12px; }
+.box { border-radius: 8px; padding: 14px 16px; margin: 14px 0; }
+.box h4 { margin: 0 0 8px; font-size: 15px; }
+.box ul { margin: 0; padding-left: 20px; }
+.box.warn { background: #fff3e0; border-left: 4px solid #ff9800; }
+.box.info { background: #e3f2fd; border: 1px solid #90caf9; }
+.box.gray { background: #f5f5f5; }
+.box.green { background: #e8f5e9; border: 2px solid #4caf50; text-align: center; }
+.red { color: #d32f2f; font-weight: bold; }
+.big { font-size: 26px; font-weight: bold; }
+.lurelink { color: #1a5fb4; text-decoration: underline; }
+.field { margin-top: 10px; }
+.field label { display: block; font-size: 13px; color: var(--sub); }
+.fakeinput { display: block; border: 1px solid #ccc; border-radius: 4px; padding: 9px 10px; color: #999; background: #fff; }
+.sig { font-size: 13px; color: var(--sub); border-top: 1px solid var(--line); padding-top: 12px; margin-top: 16px; }
+.fakebtn { display: block; margin-top: 22px; background: var(--brand); color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; }
+.mail-foot { padding: 16px 22px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.fakebtn.flag.found { background: #a33a0a; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h2>1. 2026년 1차 모의훈련 메일입니다 <span class="counter" id="flagCounter">0 / 6</span></h2>
+  <p class="lead">2026년 1차 모의훈련에서 발송된 메일을 재현했습니다(받는 사람 등 일부 정보는 바꿈).
+    수상한 곳을 <b>직접 클릭</b>해 6군데를 모두 찾아보세요.</p>
+
+  <div class="mail">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span><span class="v"><span class="flag" data-flag="sender">국세청 홈택스 &lt;noreply@hometax-refund.kr&gt;<span class="badge">!</span></span></span></div>
+      <div class="row"><span class="k">받는사람</span><span class="v">honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span><span class="v">[국세청] 미신청 세액공제 환급 안내</span></div>
+    </div>
+    <div class="mail-banner" style="background:#003d82;color:#fff">
+      국세청 홈택스<small>National Tax Service</small>
+    </div>
+    <div class="mail-body">
+      <div class="box gray" style="border-left:3px solid #003d82">
+        <div style="font-size:13px;color:#666">수신인</div><b>홍길동님</b>
+      </div>
+      <p>귀하의 건승과 댁내 평안을 기원합니다.</p>
+      <p><span class="flag" data-flag="money">국세청 AI 빅데이터 분석 결과, 귀하께서 <span class="red">미신청한 세액공제 항목</span>이 발견되어 안내드립니다.<span class="badge">!</span></span></p>
+      <div class="box" style="background:#4169e1;color:#fff;text-align:center">
+        <div style="font-size:14px">귀하의 추가 환급 가능 금액</div>
+        <div class="big">최대 1,523,400원</div>
+        <div style="font-size:13px;margin-top:8px"><span class="flag" data-flag="deadline">신청 마감일: 2026년 01월 15일 · 마감까지 남은 시간: 358일 15시간<span class="badge">!</span></span></div>
+      </div>
+      <div class="box gray">
+        <h4>간편 신청 절차 (3분 소요)</h4>
+        <span class="flag" data-flag="steps">1단계: 본인인증 - 휴대폰 간편인증 (30초)<br>3단계: 환급계좌 확인 - 기존 등록 계좌 또는 신규 등록 (1분)<span class="badge">!</span></span><br>
+        4단계: 신청 완료 - 즉시 접수 확인
+      </div>
+      <span class="fakebtn flag" data-flag="link" style="background:#003d82;border-radius:0" title="실제 링크: https://hometax-refund-apply.kr/tax-credit">지금 바로 신청하기<span class="badge">!</span></span>
+      <p style="text-align:center;font-size:12px;color:#666;margin-top:10px"><span class="flag" data-flag="reassure">🔒 SSL 보안인증 | 본인인증 후 자동 입력<br>⚠️ 국세청은 계좌 비밀번호, 보안카드 번호, OTP 번호를 요구하지 않습니다.<span class="badge">!</span></span></p>
+      <div class="sig"><b>국세청 납세자보호담당관</b><br>2025년 1월 6일</div>
+    </div>
+    <div class="mail-foot">※ 본 메일은 국세청 납세자 맞춤형 서비스의 일환으로 발송되었습니다.</div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li><b>보낸사람은 표시 이름이 아니라 실제 주소</b>(&lt; &gt; 안)를 확인합니다. 정부기관 메일은 <b>go.kr</b> 도메인에서 옵니다.</li>
+    <li>세금 환급·추가공제는 <b>메일 링크가 아니라 홈택스 주소를 직접 입력</b>하거나 공식 앱에서 확인합니다. 연말정산 관련 문의는 회사 급여 담당자에게 하면 됩니다.</li>
+    <li><b>환급을 이유로 본인인증·계좌 등록을 요구하는 메일</b>은 입력하지 말고 신고합니다. "보안 안내" 문구가 있어도 마찬가지입니다.</li>
+    <li>이미 눌렀거나 정보를 입력했다면 <b>즉시 비밀번호를 바꾸고 전산 담당자에게 신고</b>합니다. 숨기면 피해가 커집니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>정부 도메인이 아닌 발신 주소</b> — 국세청 등 정부기관은 <code>go.kr</code> 도메인을 씁니다. \"hometax\"를 넣었어도 다른 도메인이면 가짜입니다.",
+    "money": "<b>\"AI 분석\"과 구체적인 환급액 미끼</b> — \"AI 빅데이터 분석\", \"최대 1,523,400원\"처럼 그럴듯한 말과 정확한 숫자로 믿음을 얻으려 합니다. 받을 돈이 있다는 기대가 경계심을 낮춥니다.",
+    "deadline": "<b>앞뒤가 맞지 않는 날짜</b> — 마감은 1월 15일인데 \"남은 시간 358일\"이라고 하고, 맨 아래 작성일은 \"2025년 1월 6일\"입니다. 서둘러 만든 가짜 메일에서 흔히 보이는 허점입니다.",
+    "steps": "<b>휴대폰 인증과 환급계좌 등록 요구</b> — 링크 한 번으로 본인인증과 계좌 등록까지 받아 냅니다. 이 과정에서 입력한 인증정보와 계좌정보가 금융사기에 쓰입니다.",
+    "link": "<b>홈택스가 아닌 링크 주소</b> — 버튼의 실제 연결 주소는 <code>https://hometax-refund-apply.kr/tax-credit</code>입니다. 진짜 홈택스 주소가 아니며, 국세청은 메일·문자 링크로 환급 신청을 받지 않습니다.",
+    "reassure": "<b>안심시키는 가짜 보안 문구</b> — \"SSL 보안인증\", \"국세청은 비밀번호를 요구하지 않습니다\" 같은 문구를 넣어 오히려 믿게 만듭니다. 보안 경고가 적혀 있다고 안전한 메일이 되는 것은 아닙니다."
+  },
+  "order": [
+    "sender",
+    "money",
+    "deadline",
+    "steps",
+    "link",
+    "reassure"
+  ],
+  "quiz": [
+    {
+      "q": "\"국세청\"에서 미신청 세액공제 환급 안내 메일이 왔습니다. 가장 안전한 확인 방법은?",
+      "opts": [
+        "메일의 \"지금 바로 신청하기\" 버튼을 누른다",
+        "홈택스 주소를 직접 입력해 접속하거나 회사 급여 담당자에게 확인한다",
+        "메일에 답장해 환급 여부를 묻는다"
+      ],
+      "answer": 1,
+      "fb": "국세청은 메일·문자 링크로 환급 신청을 받지 않습니다. 내가 아는 경로로만 확인하세요."
+    },
+    {
+      "q": "국세청 등 정부기관이 보낸 메일의 발신 도메인은 보통 어떻게 끝날까요?",
+      "opts": [
+        ".com",
+        ".kr (아무 .kr 주소)",
+        ".go.kr"
+      ],
+      "answer": 2,
+      "fb": "정부기관은 go.kr 도메인을 씁니다. hometax-refund.kr 처럼 이름만 비슷한 주소에 속지 마세요."
+    },
+    {
+      "q": "메일 아래에 \"국세청은 비밀번호를 요구하지 않습니다\"라는 보안 안내가 있습니다. 이 메일은 안전할까요?",
+      "opts": [
+        "아니다. 보안 문구는 믿게 만들려고 넣었을 수 있으니 주소와 요구 내용을 따져야 한다",
+        "그렇다. 보안 안내가 있으니 공식 메일이다",
+        "SSL 표시까지 있으니 안전하다"
+      ],
+      "answer": 0,
+      "fb": "공격자도 보안 문구와 자물쇠 표시를 얼마든지 붙일 수 있습니다. 발신 주소와 링크 주소, 요구하는 정보를 확인하세요."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람 주소",
+    "money": "AI 분석 문장",
+    "deadline": "파란 상자 속 마감 안내",
+    "steps": "신청 절차",
+    "link": "신청 버튼",
+    "reassure": "버튼 아래 보안 문구"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>

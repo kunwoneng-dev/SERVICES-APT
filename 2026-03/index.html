@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026년 4차 악성메일 모의훈련 · 메일 발송 실패 알림 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+h1 { font-size: 20px; margin: 4px 0 4px; }
+.mail-head .row > span:last-child { min-width: 0; word-break: break-all; }
+.mail-body { padding: 22px 20px; word-break: keep-all; overflow-wrap: anywhere; }
+.mail-body p { margin: 0 0 12px; }
+.band { padding: 18px 20px; color: #fff; }
+.band .big { font-size: 20px; font-weight: bold; }
+.band .small { font-size: 12px; opacity: .9; margin-top: 4px; }
+.box { border-radius: 8px; padding: 14px 16px; margin: 14px 0; font-size: 14px; }
+.box .bt { font-weight: bold; margin-bottom: 6px; }
+.box ul { margin: 0; padding-left: 18px; }
+.mono { font-family: Consolas, "Courier New", monospace; font-size: 12.5px; }
+.fakebtn { display: block; margin: 20px auto 6px; max-width: 360px; background: var(--brand); color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; }
+.fakelink { color: #0000ee; text-decoration: underline; }
+.mail-foot { padding: 16px 20px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.r03 .band { background: #dc3545; }
+.r03 .fakebtn { background: #dc3545; }
+.r03 .fakebtn.flag.found { background: #8a1c27; }
+.fakebtn.flag.found { background: #a33a0a; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff; color: inherit;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>2026년 4차 모의훈련 · 메일 발송 실패 알림 사칭</h1>
+
+  <h2>1. 훈련 메일을 다시 살펴봅시다 <span class="counter" id="flagCounter">0 / 5</span></h2>
+  <p class="lead">이번 2026년 4차 모의훈련에서 발송된 메일을 간단히 재현했습니다(받는 사람은 예시 주소로 바꿈).
+    수상한 곳을 <b>직접 클릭</b>해 5군데를 모두 찾아보세요.</p>
+
+  <div class="mail r03">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span>
+        <span><span class="flag" data-flag="sender">Mail Delivery System &lt;mailer-daemon@kunwoneng.com&gt;<span class="badge">!</span></span></span></div>
+      <div class="row"><span class="k">받는사람</span><span>honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span><span>[Mail System] 메일 발송 실패 알림</span></div>
+    </div>
+    <div class="band"><div class="big">⚠️ Mail Delivery Failure</div>
+      <div class="small">건원엔지니어링 메일 시스템</div></div>
+    <div class="mail-body">
+      <p style="text-align:center;color:#856404;font-weight:bold;background:#fff3cd;padding:10px;border-radius:6px">발송하신 메일이 전달되지 않았습니다.</p>
+      <p><span class="flag" data-flag="vague">귀하께서 발송하신 이메일이 수신자에게 전달되지 못했습니다.<br>수신자의 메일함 용량이 가득 차서 메일을 받을 수 없습니다.<span class="badge">!</span></span></p>
+      <span class="fakebtn flag" data-flag="link" title="실제 연결 주소: 사내 시스템처럼 꾸민 가짜 주소">이메일 전송 처리<span class="badge">!</span></span>
+      <div class="box mono" style="background:#f8f9fa;border:1px solid #dee2e6;color:#555">
+        <div class="bt" style="font-family:inherit">시스템 오류 로그</div>
+        <span class="flag" data-flag="log">Reporting-MTA: dns; (메일 서버)<br>Arrival-Date: Tue, 17 Mar 2026<br>Final-Recipient: rfc822;<br>Action: failed · Status: 5.5.0<br>Diagnostic-Code: smtp; 550 Mailbox quota exceeded<span class="badge">!</span></span>
+      </div>
+      <div class="box" style="border-top:2px solid #e0e0e0;border-radius:0;padding-left:0">
+        <span class="flag" data-flag="contact"><b>기술 지원</b> — IT운영팀 (메일시스템 담당)<br>※ 본인이 발송한 메일이 아닌 경우 IT운영팀에 즉시 신고하세요. ※ 이 메일에 회신하지 마세요.<span class="badge">!</span></span>
+      </div>
+    </div>
+    <div class="mail-foot">건원엔지니어링 메일 시스템 · Mail Delivery System / IT Operations Team</div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li>발송 실패 알림이 오면 <b>버튼을 누르지 말고 보낸메일함</b>에서 해당 메일이 실제로 있었는지 확인합니다.</li>
+    <li><b>진짜 반송 메일은 버튼이나 로그인을 요구하지 않습니다.</b> 다시 보내야 하면 메일 프로그램에서 직접 다시 보냅니다.</li>
+    <li><code>mailer-daemon</code>, "시스템 관리자" 같은 <b>시스템 발신자도 위조될 수 있습니다.</b></li>
+    <li>의심스러우면 <b>메일에 적힌 연락처가 아니라 평소 아는 전산 담당자</b>에게 문의합니다.</li>
+    <li>이미 누르고 비밀번호를 입력했다면 <b>즉시 비밀번호를 바꾸고 전산 담당자에게 신고</b>합니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>위조하기 쉬운 시스템 발신자</b> — \"Mail Delivery System\", <code>mailer-daemon</code>처럼 자동 시스템 이름을 쓰면 사람들은 의심 없이 믿습니다. 하지만 보낸사람 주소는 회사 도메인이라도 얼마든지 위조할 수 있습니다.",
+    "vague": "<b>무엇이 실패했는지 없음</b> — 진짜 반송 메일에는 내가 언제, 누구에게 보낸 어떤 메일(제목)이 실패했는지가 들어 있습니다. 이 메일은 \"수신자에게 전달되지 못했다\"고만 할 뿐 대상이 없습니다. 내가 최근 보낸 메일이 있는지 보낸메일함에서 직접 확인하면 바로 드러납니다.",
+    "link": "<b>반송 메일에 있는 버튼</b> — 메일 시스템은 실패한 메일을 \"처리\"하라고 버튼을 주지 않습니다. 실패했으면 내가 다시 보내면 될 뿐입니다. 이 버튼은 사내 시스템처럼 꾸민 가짜 주소로 연결되어 로그인 정보를 입력하게 만듭니다.",
+    "log": "<b>어려운 기술 로그로 포장</b> — SMTP 오류 코드, 서버 이름 등 일반인이 이해하기 어려운 내용을 넣어 진짜 시스템 메일처럼 보이게 했습니다. 정작 중요한 <code>Final-Recipient</code>(받는 사람) 칸은 비어 있습니다.",
+    "contact": "<b>메일 속 문의처와 역설적 안내</b> — \"본인이 보낸 메일이 아니면 신고하라\", \"회신하지 말라\"는 문구로 오히려 공식 메일처럼 보이게 합니다. 의심스러울 때는 메일에 적힌 연락처가 아니라 평소 알고 있는 전산 담당자 연락처로 문의해야 합니다."
+  },
+  "order": [
+    "sender",
+    "vague",
+    "link",
+    "log",
+    "contact"
+  ],
+  "quiz": [
+    {
+      "q": "\"메일 발송 실패\" 알림이 왔는데 어떤 메일이 실패했는지 나와 있지 않습니다. 어떻게 확인할까요?",
+      "opts": [
+        "\"이메일 전송 처리\" 버튼을 눌러 본다",
+        "보낸메일함에서 최근 보낸 메일과 대상을 직접 확인한다",
+        "메일에 회신해서 물어본다"
+      ],
+      "answer": 1,
+      "fb": "실패한 메일이 무엇인지 알려 주지 않는 반송 메일은 의심해야 합니다. 확인은 항상 내 메일함에서 직접 하세요."
+    },
+    {
+      "q": "보낸사람이 mailer-daemon@(회사 도메인)으로 표시됩니다. 맞는 설명은?",
+      "opts": [
+        "회사 도메인이므로 무조건 진짜다",
+        "시스템 발신자 주소도 위조될 수 있으므로 내용과 요구 사항을 함께 따져 봐야 한다",
+        "mailer-daemon은 위조할 수 없다"
+      ],
+      "answer": 1,
+      "fb": "보낸사람 표시는 위조가 쉽습니다. 버튼 클릭·로그인 요구가 있다면 그 자체로 강한 위험 신호입니다."
+    },
+    {
+      "q": "메일 속 버튼을 눌렀더니 회사 로그인 화면과 비슷한 페이지가 열렸습니다. 올바른 행동은?",
+      "opts": [
+        "아이디와 비밀번호를 입력한다",
+        "창을 닫고, 이미 입력했다면 비밀번호를 바꾼 뒤 전산 담당자에게 알린다",
+        "다른 비밀번호로 한 번 시도해 본다"
+      ],
+      "answer": 1,
+      "fb": "메일 링크로 열린 로그인 화면에는 입력하지 마세요. 실수했더라도 빨리 알리면 피해를 막을 수 있습니다."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람",
+    "vague": "본문 첫 문장",
+    "link": "빨간 버튼",
+    "log": "시스템 오류 로그",
+    "contact": "기술 지원 안내"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>

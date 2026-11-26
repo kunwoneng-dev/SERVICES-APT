@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>악성메일 모의훈련 교육자료</title>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #f4f6f9; color: #1b2d3d; font-family: "Malgun Gothic", "Apple SD Gothic Neo", sans-serif; }
+  header { background: #163a5f; color: #fff; padding: 18px 20px; }
+  header h1 { margin: 0; font-size: 20px; }
+  header p { margin: 4px 0 0; font-size: 13px; opacity: .85; }
+  .layout { display: flex; gap: 16px; padding: 16px; align-items: flex-start; }
+  nav { width: 260px; flex-shrink: 0; background: #fff; border: 1px solid #e3e8ee; border-radius: 12px; padding: 8px; position: sticky; top: 16px; }
+  nav h2 { font-size: 13px; color: #5c6872; margin: 10px 8px 4px; }
+  nav button { display: block; width: 100%; text-align: left; font: inherit; font-size: 14px; background: none; border: 0;
+    border-radius: 8px; padding: 8px 10px; cursor: pointer; color: inherit; }
+  nav button:hover { background: #f2f7fc; }
+  nav button.on { background: #216da8; color: #fff; }
+  nav small { display: block; font-size: 12px; opacity: .75; }
+  main { flex: 1; min-width: 0; }
+  iframe { width: 100%; height: 900px; border: 1px solid #e3e8ee; border-radius: 12px; background: #fff; display: block; }
+  @media (max-width: 760px) {
+    .layout { flex-direction: column; padding: 12px; }
+    nav { width: 100%; position: static; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <h1>악성메일 모의훈련 교육자료</h1>
+  <p>회차를 고르면 그 회차의 교육 페이지를 보여줍니다.</p>
+</header>
+<div class="layout">
+  <nav id="nav"></nav>
+  <main><iframe id="view" title="회차 교육자료"></iframe></main>
+</div>
+<script>
+  // 회차를 추가하면 이 목록에 한 줄 추가한다 (path = 폴더명 = DB roundJson 의 eduPath)
+  var ROUNDS = [
+    { year: 2026, path: '2026-11',   label: '11차', topic: '회사 계정 인증 사칭' },
+    { year: 2026, path: '2026-10',   label: '10차', topic: '금융감독원 사칭' },
+    { year: 2026, path: '2026-08',   label: '9차',  topic: 'LinkedIn 사칭' },
+    { year: 2026, path: '2026-07',   label: '8차',  topic: '인사팀 성과평가 사칭' },
+    { year: 2026, path: '2026-06',   label: '7차',  topic: '법인카드 결제 승인 사칭' },
+    { year: 2026, path: '2026-05',   label: '6차',  topic: '건강보험료 환급 사칭' },
+    { year: 2026, path: '2026-04',   label: '5차',  topic: '견적 요청 메일 사칭' },
+    { year: 2026, path: '2026-03',   label: '4차',  topic: '메일 발송 실패 알림 사칭' },
+    { year: 2026, path: '2026-02',   label: '3차',  topic: '준법감시실 사칭' },
+    { year: 2026, path: '2026-01-2', label: '2차',  topic: '복지몰 제휴 사칭' },
+    { year: 2026, path: '2026-01-1', label: '1차',  topic: '국세청 환급 사칭' },
+    { year: 2025, path: '2025-r9',   label: '9차',  topic: '쇼핑몰 유출 보상 사칭' },
+    { year: 2025, path: '2025-r8',   label: '8차',  topic: '가상자산 거래소 사칭' },
+    { year: 2025, path: '2025-r7',   label: '7차',  topic: '이직 제안 사칭' },
+    { year: 2025, path: '2025-r6',   label: '6차',  topic: '회의자료 열람 사칭' },
+    { year: 2025, path: '2025-r5',   label: '5차',  topic: '민생회복지원금 신청 안내 사칭' },
+    { year: 2025, path: '2025-r4',   label: '4차',  topic: '은행 퇴직연금 운용보고서 사칭' },
+    { year: 2025, path: '2025-r3',   label: '3차',  topic: '메일 용량 초과 안내 사칭' },
+    { year: 2025, path: '2025-r2',   label: '2차',  topic: '국세청 세금계산서 알림 사칭' },
+    { year: 2025, path: '2025-r1',   label: '1차',  topic: '사내 계정 보안 인증 사칭' }
+  ];
+
+  var nav = document.getElementById('nav');
+  var view = document.getElementById('view');
+  var buttons = {};
+  var lastYear = null;
+
+  ROUNDS.forEach(function (r) {
+    if (r.year !== lastYear) {
+      var h = document.createElement('h2');
+      h.textContent = r.year + '년';
+      nav.appendChild(h);
+      lastYear = r.year;
+    }
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.textContent = r.label;
+    var sm = document.createElement('small');
+    sm.textContent = r.topic;
+    b.appendChild(sm);
+    b.addEventListener('click', function () { show(r.path, true); });
+    nav.appendChild(b);
+    buttons[r.path] = b;
+  });
+
+  function show(path, push) {
+    if (!buttons[path]) path = ROUNDS[0].path;
+    Object.keys(buttons).forEach(function (k) { buttons[k].classList.toggle('on', k === path); });
+    view.style.height = '900px';
+    view.src = path + '/index.html';
+    if (push) history.replaceState(null, '', '#' + path);
+  }
+
+  // 회차 페이지가 보내는 높이에 맞춰 iframe 크기를 조절한다 (같은 사이트에서 온 메시지만)
+  window.addEventListener('message', function (ev) {
+    if (ev.origin !== location.origin || ev.source !== view.contentWindow) return;
+    var d = ev.data;
+    if (d && d.type === 'edu-resize' && typeof d.height === 'number' && d.height > 200 && d.height < 50000) {
+      view.style.height = Math.ceil(d.height) + 'px';
+    }
+  });
+
+  show(location.hash.slice(1), false);
+</script>
+</body>
+</html>

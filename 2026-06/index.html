@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026년 7차 악성메일 모의훈련 · 법인카드 결제 승인 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+h1 { font-size: 20px; margin: 4px 0 4px; }
+.mail-head .row > span:last-child { min-width: 0; word-break: break-all; }
+.card-top { background: #0046a6; color: #fff; padding: 16px 22px; }
+.card-top .nm { font-size: 20px; font-weight: bold; }
+.card-top .en { color: #8ab4e0; font-size: 11px; }
+.alert { display: block; background: #c0392b; color: #fff; text-align: center; font-weight: bold; font-size: 14px; padding: 11px 16px; }
+.mail-body { padding: 22px; }
+.mail-body p { margin: 0 0 12px; }
+.rcpt { display: block; background: #f5f8fb; border-left: 4px solid #0046a6; padding: 10px 14px; margin-bottom: 16px; font-size: 14px; }
+.txn { display: block; border: 2px solid #c0392b; border-radius: 8px; padding: 12px 14px; margin: 16px 0; font-size: 14px; }
+.txn .tt { color: #c0392b; font-weight: bold; margin-bottom: 6px; }
+.txn .r { display: flex; gap: 10px; padding: 4px 0; border-bottom: 1px solid #f0f0f0; }
+.txn .r:last-child { border-bottom: 0; }
+.txn .r span:first-child { width: 96px; color: #888; flex-shrink: 0; }
+.two { display: block; background: #f5f8fb; border: 1px solid #d1d8e0; border-radius: 6px; padding: 12px 14px; margin: 14px 0; font-size: 14px; }
+.two div { padding: 3px 0; }
+.fakebtn { display: block; margin-top: 18px; background: #0046a6; color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; }
+.ssl { display: block; text-align: center; color: #888; font-size: 12px; margin-top: 8px; }
+.mail-foot { padding: 16px 22px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.red { color: #c0392b; font-weight: bold; }
+.fakebtn.flag.found, .alert.flag.found { background: #a33a0a; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>2026년 7차 모의훈련 · 법인카드 결제 승인 사칭 메일</h1>
+
+  <h2>1. 이번 훈련에 사용된 메일입니다 <span class="counter" id="flagCounter">0 / 7</span></h2>
+  <p class="lead">2026년 7차 모의훈련으로 발송된 메일을 간단히 재현했습니다(수신자 정보와 주소는 교육용으로 바꿈).
+    수상한 곳을 <b>직접 클릭</b>해 7군데를 모두 찾아보세요.</p>
+
+  <div class="mail">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span>
+        <span class="flag" data-flag="sender">신한카드 법인카드 고객센터 &lt;alert@shinhan-corpcard-secure.kr&gt;<span class="badge">!</span></span></div>
+      <div class="row"><span class="k">받는사람</span><span>honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span><span>[신한카드] 법인카드 결제 승인 확인 필요 — 즉시 처리 바랍니다</span></div>
+    </div>
+    <div class="card-top"><div class="nm">신한카드</div><div class="en">Shinhan Card · 법인카드 고객센터</div></div>
+    <span class="alert flag" data-flag="urgent">⚠ 법인카드 결제 승인 확인이 필요합니다 — 24시간 이내 처리 요망<span class="badge">!</span></span>
+    <div class="mail-body">
+      <span class="rcpt flag" data-flag="personal">법인카드 사용 등록자 <b>홍길동 님</b><br>
+        <small>우리 회사 · 소속 부서 · 사번 ○○○○○</small><span class="badge">!</span></span>
+      <p>신한카드 법인카드 모니터링 시스템에서 귀하 명의 법인카드에 <span class="red">평소 이용 패턴과 다른 결제 승인 요청</span>이 감지되었습니다.
+        해당 결제는 보류(HOLD) 처리되었으며, <span class="red">24시간 이내 미확인 시 해당 법인카드는 일시 정지</span>됩니다.</p>
+      <span class="txn flag" data-flag="txn"><span class="tt">🔒 보류 중인 결제 승인 내역</span>
+        <span class="r"><span>가맹점명</span><span>GLOBAL TECH SOLUTION PTE. LTD.</span></span>
+        <span class="r"><span>가맹점 소재지</span><span class="red">Singapore (해외 결제)</span></span>
+        <span class="r"><span>결제 금액</span><span class="red">SGD 487.00 (약 483,200원)</span></span>
+        <span class="r"><span>처리 상태</span><span>⏸ 승인 보류 중</span></span><span class="badge">!</span></span>
+      <span class="two flag" data-flag="onebutton"><b>📋 처리 방법 안내</b>
+        <div>✅ 본인 결제가 맞는 경우 — 아래 버튼을 클릭해 본인 확인 후 최종 승인해 주세요.</div>
+        <div>❌ 본인 결제가 아닌 경우 — 동일하게 아래 버튼을 통해 부정 사용 신고를 접수하세요.</div><span class="badge">!</span></span>
+      <span class="fakebtn flag" data-flag="link" title="실제 연결 주소: https://shinhan-corpcard-secure.kr/verify-approval">결제 승인 확인하기<span class="badge">!</span></span>
+      <span class="ssl flag" data-flag="ssl">🔒 신한카드 보안 인증 페이지로 연결됩니다 · SSL 256bit 암호화<span class="badge">!</span></span>
+    </div>
+    <div class="mail-foot">신한카드 법인카드 고객센터 이상거래탐지팀 · ※ 본 메일은 「여신전문금융업법」 제16조에 의거하여 발송되었습니다. 발신 전용 메일입니다.</div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li><b>카드 결제 이상 알림은 메일 링크로 확인하지 않습니다.</b> 카드사 공식 앱이나 카드 뒷면의 고객센터 번호로 직접 확인합니다.</li>
+    <li><b>보낸사람 실제 주소와 버튼 연결 주소</b>를 확인합니다. 카드사 이름에 "-secure", "-corpcard" 등을 붙인 주소는 가짜입니다.</li>
+    <li>"24시간 내 미확인 시 정지"처럼 <b>시간을 정해 겁을 주면 오히려 멈추고</b>, 법인카드 관리 부서(재무·총무)에 먼저 문의합니다.</li>
+    <li>카드번호·유효기간·CVC·비밀번호를 입력했다면 <b>즉시 카드사에 정지를 요청하고 전산 담당자와 관리 부서에 신고</b>합니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>카드사 이름을 흉내 낸 발신 주소</b> — 표시 이름은 \"신한카드 법인카드 고객센터\"지만 실제 주소는 <code>shinhan-corpcard-secure.kr</code> 같은 외부 도메인입니다. 카드사 이름에 \"secure\", \"corpcard\" 같은 단어를 붙여 그럴듯하게 만든 가짜 주소이며, 표시 이름은 누구나 바꿀 수 있습니다.",
+    "urgent": "<b>시간 압박</b> — 빨간 경고 띠와 \"24시간 이내 처리 요망\", \"미확인 시 카드 일시 정지·재발급\" 문구로 업무 공백이 생길까 봐 서두르게 만듭니다. 생각할 시간을 빼앗는 것이 피싱의 핵심 수법입니다.",
+    "personal": "<b>그럴듯한 개인화</b> — 이름·부서·사번이 들어 있어 카드사가 나를 정확히 아는 것처럼 보입니다. 하지만 이런 정보는 유출된 명단이나 회사 홈페이지·SNS로도 얻을 수 있어 진짜라는 증거가 되지 않습니다.",
+    "txn": "<b>불안을 부르는 가짜 결제 내역</b> — \"싱가포르 해외 결제 약 48만 원\" 같은 낯선 거래를 보여 줘 \"누가 내 카드를 쓴 건가?\" 하는 불안감을 자극합니다. 실제 결제 내역은 카드사 공식 앱이나 고객센터에서 직접 확인할 수 있습니다.",
+    "onebutton": "<b>어느 쪽이든 같은 버튼</b> — \"본인 결제면 승인\", \"본인 결제가 아니면 신고\"라며 <b>어떤 경우든 같은 버튼을 누르게</b> 유도합니다. 선택지가 있는 것처럼 보이지만 목적은 오직 링크 클릭입니다.",
+    "link": "<b>가짜 인증 사이트</b> — 버튼의 실제 연결 주소는 <code>https://shinhan-corpcard-secure.kr/verify-approval</code>입니다. 카드사 공식 사이트가 아니라, 본인 확인을 핑계로 카드번호·유효기간·CVC·비밀번호를 입력받아 빼 가는 피싱 페이지입니다.",
+    "ssl": "<b>보안 문구로 안심시키기</b> — \"보안 인증 페이지\", \"SSL 256bit 암호화\"라는 말은 누구나 적을 수 있습니다. 자물쇠 표시나 암호화는 \"통신이 암호화된다\"는 뜻일 뿐, 그 사이트가 진짜 카드사라는 뜻이 아닙니다."
+  },
+  "order": [
+    "sender",
+    "urgent",
+    "personal",
+    "txn",
+    "onebutton",
+    "link",
+    "ssl"
+  ],
+  "quiz": [
+    {
+      "q": "\"해외 결제 승인 보류\" 메일을 받았습니다. 내가 쓴 결제가 아닌 것 같다면 어떻게 해야 할까요?",
+      "opts": [
+        "메일의 버튼으로 부정 사용 신고를 접수한다",
+        "카드사 공식 앱이나 카드 뒷면의 고객센터 번호로 직접 확인한다",
+        "메일에 답장해 결제 취소를 요청한다"
+      ],
+      "answer": 1,
+      "fb": "메일 속 버튼은 \"승인\"이든 \"신고\"든 같은 가짜 사이트로 연결됩니다. 반드시 공식 경로로 직접 확인하세요."
+    },
+    {
+      "q": "메일에 \"SSL 256bit 암호화 · 보안 인증 페이지\"라고 적혀 있습니다. 이 사이트를 믿어도 될까요?",
+      "opts": [
+        "네, 암호화되어 있으니 안전하다",
+        "아니요, 보안 문구는 누구나 적을 수 있어 진짜라는 증거가 아니다",
+        "자물쇠 아이콘이 있으면 무조건 안전하다"
+      ],
+      "answer": 1,
+      "fb": "피싱 사이트도 암호화(https)를 씁니다. 중요한 것은 주소가 카드사 공식 도메인인지입니다."
+    },
+    {
+      "q": "실수로 링크에 법인카드 번호와 CVC를 입력했습니다. 가장 먼저 할 일은?",
+      "opts": [
+        "카드사에 즉시 정지를 요청하고 전산 담당자·관리 부서에 신고한다",
+        "결제 내역이 생길 때까지 지켜본다",
+        "메일을 삭제하고 잊는다"
+      ],
+      "answer": 0,
+      "fb": "법인카드는 회사 자금과 직결됩니다. 빨리 정지하고 알릴수록 피해를 막을 수 있으며, 신고했다고 불이익은 없습니다."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람 주소",
+    "urgent": "빨간 경고 띠",
+    "personal": "이름·사번 상자",
+    "txn": "결제 내역 상자",
+    "onebutton": "처리 방법 안내",
+    "link": "파란 버튼",
+    "ssl": "버튼 아래 보안 문구"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>

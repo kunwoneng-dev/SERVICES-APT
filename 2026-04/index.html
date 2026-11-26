@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026년 5차 악성메일 모의훈련 · 견적 요청 메일 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+h1 { font-size: 20px; margin: 4px 0 4px; }
+.mail-head .row > span:last-child { min-width: 0; word-break: break-all; }
+.mail-body { padding: 22px 20px; word-break: keep-all; overflow-wrap: anywhere; }
+.mail-body p { margin: 0 0 12px; }
+.band { padding: 18px 20px; color: #fff; }
+.band .big { font-size: 20px; font-weight: bold; }
+.band .small { font-size: 12px; opacity: .9; margin-top: 4px; }
+.box { border-radius: 8px; padding: 14px 16px; margin: 14px 0; font-size: 14px; }
+.box .bt { font-weight: bold; margin-bottom: 6px; }
+.box ul { margin: 0; padding-left: 18px; }
+.mono { font-family: Consolas, "Courier New", monospace; font-size: 12.5px; }
+.fakebtn { display: block; margin: 20px auto 6px; max-width: 360px; background: var(--brand); color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; }
+.fakelink { color: #0000ee; text-decoration: underline; }
+.mail-foot { padding: 16px 20px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.fakebtn.flag.found { background: #a33a0a; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff; color: inherit;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>2026년 5차 모의훈련 · 거래처 견적 요청(RFQ) 사칭</h1>
+
+  <h2>1. 훈련 메일을 다시 살펴봅시다 <span class="counter" id="flagCounter">0 / 7</span></h2>
+  <p class="lead">이번 2026년 5차 모의훈련에서 발송된 메일을 간단히 재현했습니다(받는 사람은 예시 주소로, 사칭된 회사·담당자 정보는 가려서 표시).
+    수상한 곳을 <b>직접 클릭</b>해 7군데를 모두 찾아보세요.</p>
+
+  <div class="mail r04">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span>
+        <span><span class="flag" data-flag="sender">○○ E&amp;C &lt;t*****45@murrarymcmurray.it.com&gt;<span class="badge">!</span></span></span></div>
+      <div class="row"><span class="k">받는사람</span><span>honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span><span>RFQ-FF-003 / Tank PJT Rev. A – Request for Quotation</span></div>
+    </div>
+    <div class="mail-body" style="font-size:14px">
+      <p><span class="flag" data-flag="greeting">To whom it may concern,<span class="badge">!</span></span></p>
+      <p>Can you please kindly review and quote on <b>items 6 and 10 for 350 pcs of RFQ-FF-003 / Tank PJT Rev. A</b> as attached? Please include your <b>delivery time</b> and <b>payment terms</b>.</p>
+      <p><b>C. The Submission Date of Proposal</b><br>
+        <span class="flag" data-flag="deadline"><b>23th APRIL 2026, 17:00 (GMT+9)</b><span class="badge">!</span></span></p>
+      <p><span class="fakelink flag" data-flag="link" title="실제 연결 주소: 견적서와 무관한 가짜 로그인 페이지">Open Excel File<span class="badge">!</span></span></p>
+      <p><span class="flag" data-flag="cred">For security purposes, the attachment can only be accessed with your existing details.<span class="badge">!</span></span></p>
+      <p><span class="flag" data-flag="reply">If you have checked this email, please reply confirming your confirmation within <b>2 days</b>.<span class="badge">!</span></span></p>
+      <p style="margin-top:18px">Yours truly,<br>
+        <span class="flag" data-flag="sign"><b>○○ E&amp;C</b><br>Mr. KIM (김○○) / Plant Proposal Group<br>T. +82-XX-XXX-XXXX<br>E. export○○○@(사칭된 건설사 도메인)<span class="badge">!</span></span></p>
+    </div>
+    <div class="mail-foot">본 메일은 지정된 수신자만을 위한 것이며 수신자 외에는 공개, 복사, 배포할 수 없습니다.</div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li><b>보낸사람 주소와 서명의 회사 도메인이 같은지</b> 대조합니다. 다르면 열지 않습니다.</li>
+    <li><b>파일을 열려고 메일 아이디·비밀번호를 입력하라는 화면은 피싱</b>입니다. 절대 입력하지 않습니다.</li>
+    <li>첨부파일 대신 링크로 유도하는 견적·발주 메일은 <b>누르기 전에 마우스를 올려 실제 주소를 확인</b>합니다.</li>
+    <li>처음 연락 온 거래처라면 <b>회사 대표번호 등 알고 있는 연락처</b>로 요청이 사실인지 확인합니다. 메일 속 전화번호는 쓰지 않습니다.</li>
+    <li>이미 로그인 정보를 입력했다면 <b>즉시 비밀번호를 바꾸고 전산 담당자에게 신고</b>합니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>회사 이름과 다른 발신 도메인</b> — 표시 이름은 실존 대형 건설사(○○ E&amp;C)지만, 실제 보낸 주소는 <code>murrarymcmurray.it.com</code>이라는 전혀 상관없는 도메인입니다. 진짜 거래처라면 그 회사 도메인에서 메일이 옵니다.",
+    "greeting": "<b>받는 사람을 모르는 인사</b> — \"To whom it may concern(관계자분께)\"으로 시작합니다. 실제 견적 요청은 담당자 이름이나 이전 거래 내용을 언급하는 경우가 대부분입니다. 불특정 다수에게 뿌린 메일이라는 신호입니다.",
+    "deadline": "<b>어색한 영어와 마감 압박</b> — \"23th\"(올바른 표기는 23rd)처럼 기본적인 표기 오류가 있습니다. 실존 프로젝트처럼 보이는 문서번호와 마감 시각을 내세워 바쁜 업무 중에 서둘러 열어 보게 만듭니다.",
+    "link": "<b>첨부파일 대신 링크</b> — \"Open Excel File\"은 파일이 아니라 외부 웹페이지로 가는 링크입니다. 글자와 실제 연결 주소가 다를 수 있으니 누르기 전에 마우스를 올려 주소를 확인해야 합니다. 정상적인 견적 요청은 보통 파일을 직접 첨부합니다.",
+    "cred": "<b>\"기존 계정 정보로 열람\" = 로그인 요구</b> — \"보안을 위해 기존 계정 정보로만 첨부파일을 열 수 있다\"는 말은 링크를 누르면 나오는 가짜 로그인 화면에 메일 아이디·비밀번호를 입력하게 하려는 것입니다. 엑셀 파일을 보려고 메일 비밀번호를 넣을 이유는 없습니다.",
+    "reply": "<b>회신 기한 압박과 어색한 문장</b> — \"2일 이내 회신\"을 요구하며 \"confirming your confirmation\"처럼 어색한 표현을 씁니다. 회신하면 내 메일이 살아 있는 주소라는 것이 확인되어 추가 공격 대상이 됩니다.",
+    "sign": "<b>서명과 발신 주소 불일치</b> — 서명에는 건설사 도메인의 이메일이 적혀 있지만 실제 발신 주소는 전혀 다른 도메인입니다. 서명·전화번호는 아무나 복사해 붙일 수 있으므로, 확인할 때는 서명이 아니라 실제 발신 주소를 봐야 합니다."
+  },
+  "order": [
+    "sender",
+    "greeting",
+    "deadline",
+    "link",
+    "cred",
+    "reply",
+    "sign"
+  ],
+  "quiz": [
+    {
+      "q": "보낸사람은 \"○○ E&C\"인데 주소는 처음 보는 도메인이고, 서명에는 건설사 이메일이 적혀 있습니다. 어느 쪽을 믿어야 할까요?",
+      "opts": [
+        "서명의 이메일 주소",
+        "실제 보낸사람(발신) 주소 — 둘이 다르면 의심한다",
+        "회사 이름이 같으니 둘 다 믿어도 된다"
+      ],
+      "answer": 1,
+      "fb": "서명은 아무나 복사해 넣을 수 있습니다. 판단 기준은 실제 발신 주소입니다."
+    },
+    {
+      "q": "\"Open Excel File\"을 눌렀더니 메일 계정으로 로그인해야 파일을 볼 수 있다고 합니다. 어떻게 할까요?",
+      "opts": [
+        "업무 메일이니 로그인한다",
+        "입력하지 않고 창을 닫은 뒤 전산 담당자에게 알린다",
+        "다른 브라우저로 다시 열어 로그인한다"
+      ],
+      "answer": 1,
+      "fb": "파일을 보려고 메일 비밀번호를 요구하는 화면은 계정을 훔치려는 가짜 페이지입니다."
+    },
+    {
+      "q": "처음 거래하는 회사에서 \"2일 이내 회신\"을 요구하는 견적 요청이 왔습니다. 진위를 확인하는 올바른 방법은?",
+      "opts": [
+        "메일 서명에 적힌 휴대폰 번호로 전화한다",
+        "메일에 바로 회신해 진짜인지 묻는다",
+        "회사 홈페이지 등 공식적으로 알려진 연락처로 확인한다"
+      ],
+      "answer": 2,
+      "fb": "메일 속 연락처와 회신 주소는 공격자의 것일 수 있습니다. 공식적으로 알려진 경로로 확인하세요."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람 주소",
+    "greeting": "첫 인사",
+    "deadline": "제출 기한",
+    "link": "Open Excel File",
+    "cred": "\"existing details\" 문장",
+    "reply": "2일 이내 회신 요청",
+    "sign": "서명"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>

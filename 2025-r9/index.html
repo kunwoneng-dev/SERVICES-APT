@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2025년 9차 모의훈련 · 쇼핑몰 유출 보상 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+.mail-head .v { min-width: 0; word-break: break-all; }
+.mail-banner { padding: 16px 22px; font-weight: bold; }
+.mail-banner small { display: block; font-weight: normal; font-size: 12px; opacity: .8; }
+.mail-body { padding: 24px 22px; }
+.mail-body p { margin: 0 0 12px; }
+.box { border-radius: 8px; padding: 14px 16px; margin: 14px 0; }
+.box h4 { margin: 0 0 8px; font-size: 15px; }
+.box ul { margin: 0; padding-left: 20px; }
+.box.warn { background: #fff3e0; border-left: 4px solid #ff9800; }
+.box.info { background: #e3f2fd; border: 1px solid #90caf9; }
+.box.gray { background: #f5f5f5; }
+.box.green { background: #e8f5e9; border: 2px solid #4caf50; text-align: center; }
+.red { color: #d32f2f; font-weight: bold; }
+.big { font-size: 26px; font-weight: bold; }
+.lurelink { color: #1a5fb4; text-decoration: underline; }
+.field { margin-top: 10px; }
+.field label { display: block; font-size: 13px; color: var(--sub); }
+.fakeinput { display: block; border: 1px solid #ccc; border-radius: 4px; padding: 9px 10px; color: #999; background: #fff; }
+.sig { font-size: 13px; color: var(--sub); border-top: 1px solid var(--line); padding-top: 12px; margin-top: 16px; }
+.fakebtn { display: block; margin-top: 22px; background: var(--brand); color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; }
+.mail-foot { padding: 16px 22px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.fakebtn.flag.found { background: #a33a0a; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h2>1. 2025년 9차 모의훈련 메일입니다 <span class="counter" id="flagCounter">0 / 6</span></h2>
+  <p class="lead">2025년 9차 모의훈련에서 발송된 메일을 재현했습니다(받는 사람 등 일부 정보는 바꿈).
+    수상한 곳을 <b>직접 클릭</b>해 6군데를 모두 찾아보세요.</p>
+
+  <div class="mail">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span><span class="v"><span class="flag" data-flag="sender">쿠팡 고객보호센터 &lt;security@coupang-protection.com&gt;<span class="badge">!</span></span></span></div>
+      <div class="row"><span class="k">받는사람</span><span class="v">honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span><span class="v">[긴급] 개인정보 유출 피해 보상 및 본인확인 안내</span></div>
+    </div>
+    <div class="mail-banner" style="text-align:center;border-bottom:3px solid #4285f4">
+      <span style="font-size:28px;color:#4285f4">Coupang</span><small>고객보호센터</small>
+    </div>
+    <div class="mail-body">
+      <p>안녕하세요, 쿠팡입니다.</p>
+      <p><span class="flag" data-flag="leak">최근 당사 시스템에서 발생한 <span class="red">대규모 개인정보 유출 사고</span>로 인해 고객님의 개인정보가 외부에 노출되었을 가능성이 확인되었습니다.<span class="badge">!</span></span>
+        2차 피해를 방지하기 위해 <b>긴급 본인확인 절차</b>가 필요합니다.</p>
+      <div class="box info">
+        <h4 style="color:#1565c0">피해보상 프로그램 안내</h4>
+        <span class="flag" data-flag="reward">✓ 쿠팡캐시 <span class="red">200,000원</span> 즉시 지급<br>✓ 로켓와우 멤버십 <b>6개월 무료</b> 제공<br>✓ 개인정보 보호 모니터링 서비스 <b>1년 무료</b><span class="badge">!</span></span>
+      </div>
+      <div class="box gray">
+        <h4>필수 조치사항</h4>
+        1단계: 아래 '본인확인 및 보상신청' 버튼 클릭<br>
+        <span class="flag" data-flag="steps">2단계: 본인인증 (휴대폰 인증 또는 카드 인증)<br>3단계: 개인정보 유출 확인 및 보상금 수령 계좌 등록<span class="badge">!</span></span><br>
+        4단계: 비밀번호 재설정 및 보안등급 강화
+      </div>
+      <span class="fakebtn flag" data-flag="link" style="border-radius:30px;background:#4285f4" title="실제 링크: https://coupang-security-verify.info/compensation">본인확인 및 보상신청 바로가기<span class="badge">!</span></span>
+      <div class="box warn" style="border-left-color:#d32f2f;background:#ffebee;color:#c62828">
+        <span class="flag" data-flag="threat">⏰ 마감까지 72시간 남았습니다. 기한 내 미신청 시 자동 소멸됩니다.<br>본 조치를 완료하지 않으실 경우, 향후 발생할 수 있는 금융사기 피해에 대해 쿠팡이 책임지지 않을 수 있습니다.<span class="badge">!</span></span>
+      </div>
+    </div>
+    <div class="mail-foot">※ 본 메일은 발신전용 메일입니다. ※ 개인정보 보호를 위해 타인에게 본 메일을 공유하지 마시기 바랍니다.</div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li><b>보낸사람은 표시 이름이 아니라 실제 주소</b>(&lt; &gt; 안)를 확인합니다. 비슷해 보여도 공식 도메인과 한 글자라도 다르면 가짜입니다.</li>
+    <li>큰 사고 뉴스 뒤에 오는 <b>"보상", "피해 확인" 메일은 링크를 누르지 말고</b> 공식 앱이나 직접 입력한 홈페이지 주소로 공지를 확인합니다.</li>
+    <li><b>보상금·환불을 이유로 카드 정보, 계좌번호, 인증번호를 요구하면</b> 피싱으로 보고 입력하지 않습니다.</li>
+    <li>이미 눌렀거나 정보를 입력했다면 <b>즉시 비밀번호를 바꾸고 전산 담당자에게 신고</b>합니다. 숨기면 피해가 커집니다. 카드·계좌 정보를 입력했다면 카드사·은행에도 바로 연락합니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>공식 도메인이 아닌 발신 주소</b> — 쇼핑몰 공식 도메인이 아니라 \"protection\"을 붙여 그럴듯하게 만든 다른 도메인입니다. 이름이 비슷해도 @ 뒤가 공식 주소와 정확히 같지 않으면 남의 주소입니다.",
+    "leak": "<b>실제 뉴스를 미끼로</b> — 실제로 화제가 된 유출 사고를 끌어와 \"내 정보도 털렸나?\" 하는 불안을 자극합니다. 큰 사고가 보도되면 곧바로 이를 흉내 낸 피싱이 쏟아집니다.",
+    "reward": "<b>지나치게 후한 보상</b> — 현금성 20만 원에 멤버십까지 \"즉시 지급\"한다는 것은 클릭을 끌어내기 위한 미끼입니다. 실제 보상 안내는 공식 앱·홈페이지 공지로 확인할 수 있습니다.",
+    "steps": "<b>카드 인증과 계좌 등록 요구</b> — \"보상금을 받으려면\" 휴대폰·카드 인증과 계좌 등록을 하라고 합니다. 이렇게 입력한 카드·계좌·인증 정보가 바로 공격자가 노리는 것입니다.",
+    "link": "<b>엉뚱한 링크 주소</b> — 버튼의 실제 연결 주소는 <code>https://coupang-security-verify.info/compensation</code>입니다. 공식 도메인이 아닌 가짜 보상신청 사이트입니다.",
+    "threat": "<b>시간 제한과 책임 회피 협박</b> — \"72시간\", \"자동 소멸\", \"책임지지 않을 수 있다\"는 말로 겁을 줘 확인 없이 누르게 만듭니다. \"타인에게 공유하지 말라\"는 문구도 주변에 물어보지 못하게 하려는 것입니다."
+  },
+  "order": [
+    "sender",
+    "leak",
+    "reward",
+    "steps",
+    "link",
+    "threat"
+  ],
+  "quiz": [
+    {
+      "q": "유출 사고 보도 직후, 해당 회사 이름으로 \"보상금을 신청하라\"는 메일이 왔습니다. 가장 안전한 확인 방법은?",
+      "opts": [
+        "메일 버튼으로 들어가 신청한다",
+        "공식 앱이나 직접 주소를 입력한 홈페이지에서 공지를 확인한다",
+        "메일에 적힌 고객센터 이메일로 문의한다"
+      ],
+      "answer": 1,
+      "fb": "메일 속 버튼·연락처는 공격자가 만든 것일 수 있습니다. 내가 아는 공식 경로로만 확인하세요."
+    },
+    {
+      "q": "버튼의 실제 주소가 coupang-security-verify.info 입니다. 어떻게 판단해야 할까요?",
+      "opts": [
+        "회사 이름이 들어 있으니 공식 사이트다",
+        "\"security\"가 들어 있으니 안전하다",
+        "공식 도메인이 아니므로 가짜 사이트다"
+      ],
+      "answer": 2,
+      "fb": "회사 이름이나 \"security\" 같은 단어는 누구나 주소에 넣을 수 있습니다. 공식 도메인과 정확히 같은지 확인하세요."
+    },
+    {
+      "q": "\"보상금 수령\"을 위해 카드 인증과 계좌 등록을 하라고 합니다. 올바른 대응은?",
+      "opts": [
+        "입력하지 않고 신고한다",
+        "카드 정보만 입력한다",
+        "계좌번호는 알려 줘도 괜찮다"
+      ],
+      "answer": 0,
+      "fb": "보상을 핑계로 금융정보를 받아 내는 것이 이 메일의 목적입니다. 어떤 정보도 입력하지 마세요."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람 주소",
+    "leak": "유출 사고 문장",
+    "reward": "보상 내용",
+    "steps": "필수 조치 2·3단계",
+    "link": "파란 버튼",
+    "threat": "빨간 경고 상자"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026년 3차 악성메일 모의훈련 · 준법감시실 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+h1 { font-size: 20px; margin: 4px 0 4px; }
+.mail-head .row > span:last-child { min-width: 0; word-break: break-all; }
+.mail-body { padding: 22px 20px; word-break: keep-all; overflow-wrap: anywhere; }
+.mail-body p { margin: 0 0 12px; }
+.band { padding: 18px 20px; color: #fff; }
+.band .big { font-size: 20px; font-weight: bold; }
+.band .small { font-size: 12px; opacity: .9; margin-top: 4px; }
+.box { border-radius: 8px; padding: 14px 16px; margin: 14px 0; font-size: 14px; }
+.box .bt { font-weight: bold; margin-bottom: 6px; }
+.box ul { margin: 0; padding-left: 18px; }
+.mono { font-family: Consolas, "Courier New", monospace; font-size: 12.5px; }
+.fakebtn { display: block; margin: 20px auto 6px; max-width: 360px; background: var(--brand); color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; }
+.fakelink { color: #0000ee; text-decoration: underline; }
+.mail-foot { padding: 16px 20px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.r02 .band { background: #1a237e; }
+.r02 .fakebtn { background: #1a237e; }
+.r02 .fakebtn.flag.found { background: #a33a0a; }
+.fakebtn.flag.found { background: #a33a0a; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff; color: inherit;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>2026년 3차 모의훈련 · 가상자산 신고 요구 메일</h1>
+
+  <h2>1. 훈련 메일을 다시 살펴봅시다 <span class="counter" id="flagCounter">0 / 7</span></h2>
+  <p class="lead">이번 2026년 3차 모의훈련에서 발송된 메일을 간단히 재현했습니다(받는 사람은 예시 주소로 바꿈).
+    수상한 곳을 <b>직접 클릭</b>해 7군데를 모두 찾아보세요.</p>
+
+  <div class="mail r02">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span>
+        <span><span class="flag" data-flag="sender">건원엔지니어링 준법감시실 · Compliance Office<span class="badge">!</span></span></span></div>
+      <div class="row"><span class="k">받는사람</span><span>honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span><span>⚠️ [중요 필독 - 즉시 조치 필요] 임직원 가상자산 투자 현황 의무 신고 안내</span></div>
+    </div>
+    <div class="band"><div class="big">임직원 가상자산 투자 현황 의무 신고 안내</div>
+      <div class="small">건원엔지니어링 준법감시실 · Compliance Office</div></div>
+    <div class="mail-body">
+      <p>최근 건설업계 임직원의 가상자산 투자 관련 이해상충 및 내부정보 이용 사례가 적발되고 있습니다. 이에 따라 전 임직원의 가상자산 투자 현황을 의무적으로 신고받고자 합니다.</p>
+      <div class="box" style="background:#f8f9fa;border:1px solid #dee2e6">
+        <div class="bt">관련 법령 및 근거</div>
+        <span class="flag" data-flag="law">▪ 자본시장법 제174조 (미공개정보 이용행위 금지)<br>▪ 특정금융정보법 제5조의2 (가상자산 신고의무)<br>▪ 건원엔지니어링 준법감시 규정 제12조<span class="badge">!</span></span>
+      </div>
+      <div class="box" style="background:#fff9e6;border:1px solid #ffe08a">
+        <div class="bt">신고 시 제출 정보</div>
+        <span class="flag" data-flag="info">사번·성명 본인 인증 → 보유 거래소 목록, 가상자산 종류·수량, 평가금액 입력 → <b>거래소 보유 인증 스크린샷 업로드</b><span class="badge">!</span></span>
+      </div>
+      <div class="box" style="background:#fff5f5;border:1px solid #ffc9c9">
+        <div class="bt">⚠️ 미신고 및 허위신고 시 제재</div>
+        <span class="flag" data-flag="threat">기한 내 미신고: 인사위원회 회부 및 징계<br>허위신고: 감봉 3개월 ~ 정직 (금융감독원 통보)<br>내부정보 이용 적발: 즉시 해고, 검찰 고발<span class="badge">!</span></span>
+      </div>
+      <span class="fakebtn flag" data-flag="link" title="실제 연결 주소: 사내 시스템처럼 꾸민 가짜 주소">가상자산 보유현황 신고하기<span class="badge">!</span></span>
+      <p style="text-align:center;font-size:12px;color:#888">🔒 보안 접속 | 준법감시실 직접 관리 · [QR 코드] 스캔하여 신고하기</p>
+      <div class="box" style="background:#e8f5e9;border:1px solid #b2dfdb">
+        <span class="flag" data-flag="privacy">🔐 신고된 정보는 준법감시실 전용 서버에 암호화 저장되며, 담당자 2인만 열람 가능합니다. 인사평가와 무관합니다.<span class="badge">!</span></span>
+      </div>
+      <div class="box" style="background:#f8f9fa;border:1px solid #dee2e6">
+        <span class="flag" data-flag="stats">📊 현재 신고 완료 15.1% · 신고 기한 2026년 3월 6일(금) 18:00<br>※ 2026년 3월 6일 10:00 기준 — 마감까지 8일 남았습니다.<span class="badge">!</span></span>
+      </div>
+    </div>
+    <div class="mail-foot">건원엔지니어링 준법감시실 · 2026년 2월 26일<br>※ 본 메일은 전 임직원에게 발송되었으며, 필수 이행 사항입니다.</div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li><b>준법·감사·법무 명의라도 그대로 믿지 않습니다.</b> 처음 보는 신고 요구는 해당 부서에 전화나 사내 메신저로 직접 확인합니다.</li>
+    <li><b>금융 계좌·자산 정보와 계좌 화면 캡처는 메일 링크로 제출하지 않습니다.</b></li>
+    <li>"징계", "해고", "고발" 같은 <b>위협 문구가 있으면 더 천천히</b> 확인합니다. 서두르게 만드는 것이 공격자의 목적입니다.</li>
+    <li>링크·QR코드 대신 <b>평소 쓰는 사내 시스템에 직접 접속</b>해 같은 공지가 실제로 있는지 봅니다.</li>
+    <li>이미 정보를 입력했다면 <b>즉시 전산 담당자에게 신고</b>하고, 관련 거래소·계정의 비밀번호를 바꿉니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>권위 있는 부서 이름</b> — 준법감시실·감사·법무처럼 \"거절하기 어려운\" 부서 명의를 내세웠습니다. 표시 이름은 누구나 바꿀 수 있으므로 실제 보낸 주소를 확인하고, 그래도 애매하면 해당 부서에 전화로 확인해야 합니다.",
+    "law": "<b>법률 조항 나열</b> — 자본시장법, 특정금융정보법 같은 법 조항을 여러 개 늘어놓아 공식 문서처럼 보이게 했습니다. 조항이 많다고 진짜가 되는 것은 아니며, 일반 직원이 확인하기 어려운 근거를 앞세우는 것 자체가 흔한 수법입니다.",
+    "info": "<b>민감한 금융정보 요구</b> — 사번·성명은 물론 거래소 목록, 보유 수량, 평가금액, 계좌 화면 캡처까지 요구합니다. 이런 정보가 넘어가면 금융 사기나 맞춤형 2차 공격에 그대로 쓰입니다. 정상적인 사내 신고라도 메일 링크로 스크린샷을 받는 방식은 매우 드뭅니다.",
+    "threat": "<b>징계·해고·고발 위협</b> — \"인사위원회 회부\", \"즉시 해고\", \"검찰 고발\"처럼 겁을 주는 말로 깊이 생각하지 못하게 만듭니다. 처벌을 앞세워 서두르게 하는 메일은 일단 멈추고 확인부터 해야 합니다.",
+    "link": "<b>신고 버튼과 QR코드</b> — 버튼은 사내 시스템처럼 꾸민 가짜 주소로 연결됩니다. 회사 이름이 들어간 주소처럼 보여도 진짜라는 보장이 없습니다. 링크 대신 평소 쓰는 사내 시스템에 직접 접속해 같은 공지가 있는지 확인하세요.",
+    "privacy": "<b>\"안전하다\"는 안심 문구</b> — 암호화 저장, 담당자 2인만 열람, 인사평가와 무관 등 보호 약속을 늘어놓아 오히려 경계심을 풀게 합니다. 정보를 빼 가려는 쪽이 가장 즐겨 쓰는 말입니다.",
+    "stats": "<b>앞뒤가 맞지 않는 숫자</b> — \"3월 6일 10:00 기준\"인데 \"마감까지 8일 남았다\"고 하고, 메일 날짜는 2월 26일입니다. \"신고율 15.1%\" 같은 통계로 \"나만 안 했나?\" 하는 불안을 만들지만, 급하게 만든 가짜 공지에는 이런 모순이 자주 보입니다."
+  },
+  "order": [
+    "sender",
+    "law",
+    "info",
+    "threat",
+    "link",
+    "privacy",
+    "stats"
+  ],
+  "quiz": [
+    {
+      "q": "준법감시실 이름으로 \"미신고 시 징계\"라는 메일이 왔습니다. 가장 먼저 할 일은?",
+      "opts": [
+        "징계가 무서우니 링크로 바로 신고한다",
+        "준법감시실에 전화 등 다른 경로로 사실인지 확인한다",
+        "동료에게 메일을 전달해 같이 신고하자고 한다"
+      ],
+      "answer": 1,
+      "fb": "권위 있는 부서 명의와 처벌 위협은 대표적인 피싱 수법입니다. 메일이 아닌 다른 경로로 확인하세요."
+    },
+    {
+      "q": "메일이 거래소 보유 화면 스크린샷을 올려 달라고 합니다. 맞는 판단은?",
+      "opts": [
+        "암호화해서 보관한다고 했으니 올려도 된다",
+        "민감한 금융정보이므로 확인되기 전에는 제출하지 않는다",
+        "금액 부분만 가리고 올린다"
+      ],
+      "answer": 1,
+      "fb": "\"안전하게 보관한다\"는 말은 누구나 쓸 수 있습니다. 금융정보는 진짜 요청인지 확인한 뒤에만 공식 경로로 제출합니다."
+    },
+    {
+      "q": "메일 속 날짜와 남은 기간이 서로 맞지 않습니다. 이것이 의미하는 것은?",
+      "opts": [
+        "단순 오타이니 신경 쓰지 않아도 된다",
+        "급하게 꾸며낸 가짜 메일일 수 있는 신호다",
+        "마감이 가까우니 더 서둘러야 한다"
+      ],
+      "answer": 1,
+      "fb": "날짜·숫자의 모순은 가짜 공지에서 자주 보이는 흔적입니다. 작은 이상도 확인의 계기로 삼으세요."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람",
+    "law": "관련 법령 상자",
+    "info": "신고 시 제출 정보",
+    "threat": "제재 사항",
+    "link": "신고 버튼",
+    "privacy": "개인정보 보호 문구",
+    "stats": "신고 현황 숫자"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>

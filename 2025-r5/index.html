@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2025년 5차 모의훈련 · 민생회복지원금 신청 안내 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+.mail-head .row > span:last-child { min-width: 0; word-break: break-all; }
+.bar { display: block; padding: 14px 22px; color: #fff; font-weight: bold; font-size: 18px; border-radius: 0; }
+.bar small { display: block; font-weight: normal; font-size: 12px; opacity: .85; }
+.mail-body { padding: 22px; }
+.mail-body h3 { margin: 0 0 12px; font-size: 20px; }
+.mail-body p { margin: 0 0 12px; }
+.box { border-radius: 8px; padding: 12px 16px; margin: 14px 0; }
+.box p, .box ul { margin: 4px 0; }
+.box ul { padding-left: 20px; }
+.box-y { background: #fff8e1; border-left: 4px solid #ffc107; }
+.box-o { background: #fff3e0; border-left: 4px solid #ff9800; color: #bf360c; }
+.box-b { background: #e3f2fd; border: 1px solid #bbdefb; color: #1565c0; }
+.kv { width: 100%; border-collapse: collapse; font-size: 14px; }
+.kv td { padding: 7px 4px; border-bottom: 1px solid #eee; vertical-align: top; }
+.kv td:first-child { width: 32%; font-weight: bold; }
+.red { color: #d32f2f; font-weight: bold; }
+.fakebtn { display: block; margin: 20px auto; background: var(--brand); color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; max-width: 360px; }
+.mail-foot { padding: 16px 22px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.mail-foot p { margin: 0 0 6px; }
+.fakebtn.flag.found { background: #a33a0a !important; }
+.bar.flag { outline-offset: -3px; border-radius: 0; }
+.rules code { font-size: 13px; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h2>1. 2025년 5차 모의훈련 메일입니다 <span class="counter" id="flagCounter">0 / 6</span></h2>
+  <p class="lead">2025년 5차 모의훈련에서 발송한 메일을 재현했습니다(받는 사람은 홍길동으로, 보낸사람 주소·링크는 교육용 예시로 바꿈).
+    수상한 곳을 <b>직접 클릭</b>해 6군데를 모두 찾아보세요.</p>
+
+  <div class="mail">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span><span class="flag" data-flag="sender">민생지원센터 &lt;apply@minsaeng-support.info&gt;<span class="badge">!</span></span></div>
+      <div class="row"><span class="k">받는사람</span><span>honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span><span class="flag" data-flag="subject">[긴급] 민생회복지원금 추가 신청 안내<span class="badge">!</span></span></div>
+    </div>
+    <div class="bar" style="background:#004c97">&nbsp;</div>
+    <div class="mail-body">
+      <h3>[긴급] 민생회복지원금 추가 신청 안내</h3>
+      <p><span class="flag" data-flag="target">지난 2차 민생회복지원금 신청기간 내 신청하지 못하셨거나, <b>가구 변동, 소득 재산정, 지역 보정</b> 등의 사유로 추가 신청 대상이 되신 경우<span class="badge">!</span></span>
+        지금 바로 아래 버튼을 통해 간편하게 신청하실 수 있습니다.</p>
+      <p><span class="flag" data-flag="deadline"><span style="color:#c0392b">※ 신청 마감: 2025년 10월 7일(월) 자정까지</span><span class="badge">!</span></span></p>
+      <span class="fakebtn flag" data-flag="link" style="background:#004c97" title="실제 링크: 정부 사이트처럼 꾸민 가짜 주소">지원금 추가 신청하기<span class="badge">!</span></span>
+      <p style="font-size:14px;color:#555">본 안내는 발신전용 메일이며, 기타 문의는 민생지원센터 콜센터(☎ 1588-XXXX)로 연락해주시기 바랍니다.</p>
+    </div>
+    <div class="mail-foot"><span class="flag" data-flag="footer">ⓒ 민생지원센터<br>서울특별시 중구 회복로 88, 정부민생청사<span class="badge">!</span></span></div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li><b>정부 지원금·환급금은 메일이나 문자 링크로 신청받지 않습니다.</b> 주민센터나 공식 정부 누리집에서 직접 확인합니다.</li>
+    <li>"놓치면 손해", "지금 바로" 같은 <b>이득을 미끼로 한 메일</b>도 공포를 주는 메일만큼 위험합니다.</li>
+    <li><b>날짜·요일 오류, 처음 들어 보는 기관명, 어색한 주소</b> 같은 작은 실수를 그냥 넘기지 않습니다.</li>
+    <li>어떤 경우에도 <b>메일 링크로 연결된 화면에 주민등록번호·계좌·카드번호를 입력하지 않습니다.</b></li>
+    <li>이미 눌렀거나 비밀번호·개인정보를 입력했다면 <b>즉시 비밀번호를 바꾸고 전산 담당자에게 신고</b>합니다. 숨기면 피해가 커집니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>정부 기관이 아닌 주소</b> — 정부 지원금 안내라면서 <code>minsaeng-support.info</code> 같은 일반 도메인에서 왔습니다. 정부 기관은 공식 정부 도메인을 쓰며, 무엇보다 <b>지원금 신청 링크를 메일로 보내지 않습니다</b>.",
+    "subject": "<b>[긴급] + 돈 이야기</b> — \"긴급\"과 \"지원금\"을 함께 내세워 놓치면 손해라는 생각이 들게 합니다. 공포 대신 <b>이득을 미끼</b>로 삼는 수법도 매우 흔합니다.",
+    "target": "<b>누구나 해당될 것 같은 대상 조건</b> — \"가구 변동, 소득 재산정, 지역 보정\"처럼 그럴듯한 행정 용어를 늘어놓아 \"나도 받을 수 있나?\" 싶게 만듭니다. 실제 추가 신청은 주민센터나 공식 누리집에서 공고하고, 메일 버튼으로 받지 않습니다.",
+    "deadline": "<b>틀린 요일 + 촉박한 마감</b> — 2025년 10월 7일은 월요일이 아니라 <b>화요일</b>입니다. 이렇게 날짜·요일이 맞지 않는 실수는 급조한 가짜 메일에서 자주 보입니다. 마감 기한도 서두르게 만드는 장치입니다.",
+    "link": "<b>가짜 신청 페이지로 연결</b> — \"지원금 추가 신청하기\" 버튼은 <b>정부 사이트처럼 꾸민 가짜 주소</b>로 연결되도록 만들어져 있었습니다. 실제 공격이라면 이름·주민등록번호·계좌번호·카드번호 같은 개인·금융정보를 입력하게 해 빼 갑니다.",
+    "footer": "<b>존재하지 않는 기관과 주소</b> — \"민생지원센터\", \"회복로 88, 정부민생청사\"는 실제로 없는 기관·주소입니다. 상단에는 로고도 없이 빈 파란 띠만 있습니다. 처음 들어 보는 기관이라면 공식 누리집에서 직접 찾아 확인하세요."
+  },
+  "order": [
+    "sender",
+    "subject",
+    "target",
+    "deadline",
+    "link",
+    "footer"
+  ],
+  "quiz": [
+    {
+      "q": "회사 메일로 \"민생회복지원금 추가 신청\" 안내가 왔습니다. 올바른 행동은?",
+      "opts": [
+        "마감 전에 버튼을 눌러 신청한다",
+        "메일 링크는 쓰지 않고 주민센터나 공식 정부 누리집에서 직접 확인한다",
+        "가족에게 메일을 전달해 함께 신청한다"
+      ],
+      "answer": 1,
+      "fb": "정부 지원금은 메일 링크로 신청받지 않습니다. 공식 경로로 직접 확인하세요."
+    },
+    {
+      "q": "이 메일이 \"급조한 가짜\"임을 보여 주는 단서로 알맞은 것은?",
+      "opts": [
+        "파란색 버튼이 있다",
+        "문의 전화번호가 적혀 있다",
+        "10월 7일을 월요일로 잘못 적었고, 기관명·주소가 실제로 없는 것이다"
+      ],
+      "answer": 2,
+      "fb": "날짜·요일 오류, 존재하지 않는 기관명 같은 작은 실수가 가짜를 알아보는 좋은 단서입니다."
+    },
+    {
+      "q": "신청 화면에서 주민등록번호와 계좌번호를 이미 입력했습니다. 어떻게 해야 할까요?",
+      "opts": [
+        "전산 담당자에게 신고하고, 은행에 연락해 계좌 지급정지·명의도용 방지 조치를 한다",
+        "지원금이 들어올 때까지 기다린다",
+        "메일만 삭제하면 된다"
+      ],
+      "answer": 0,
+      "fb": "금융정보가 유출됐다면 시간이 생명입니다. 즉시 신고하고 은행에 조치를 요청하세요."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람 주소",
+    "subject": "제목",
+    "target": "대상 조건 문장",
+    "deadline": "신청 마감 날짜",
+    "link": "파란 버튼",
+    "footer": "하단 기관명·주소"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>

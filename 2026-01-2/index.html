@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026년 2차 악성메일 모의훈련 · 복지몰 제휴 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+h1 { font-size: 20px; margin: 4px 0 4px; }
+.mail-head .row > span:last-child { min-width: 0; word-break: break-all; }
+.mail-body { padding: 22px 20px; word-break: keep-all; overflow-wrap: anywhere; }
+.mail-body p { margin: 0 0 12px; }
+.band { padding: 18px 20px; color: #fff; }
+.band .big { font-size: 20px; font-weight: bold; }
+.band .small { font-size: 12px; opacity: .9; margin-top: 4px; }
+.box { border-radius: 8px; padding: 14px 16px; margin: 14px 0; font-size: 14px; }
+.box .bt { font-weight: bold; margin-bottom: 6px; }
+.box ul { margin: 0; padding-left: 18px; }
+.mono { font-family: Consolas, "Courier New", monospace; font-size: 12.5px; }
+.fakebtn { display: block; margin: 20px auto 6px; max-width: 360px; background: var(--brand); color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; }
+.fakelink { color: #0000ee; text-decoration: underline; }
+.mail-foot { padding: 16px 20px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.r01 .band { background: #ff6b35; }
+.r01 .fakebtn { background: #ff6b35; }
+.r01 .fakebtn.flag.found { background: #a33a0a; }
+.fakebtn.flag.found { background: #a33a0a; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff; color: inherit;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h1>2026년 2차 모의훈련 · 복지몰 제휴 사칭 메일</h1>
+
+  <h2>1. 훈련 메일을 다시 살펴봅시다 <span class="counter" id="flagCounter">0 / 7</span></h2>
+  <p class="lead">이번 2026년 2차 모의훈련에서 발송된 메일을 간단히 재현했습니다(받는 사람은 예시 주소로 바꿈).
+    수상한 곳을 <b>직접 클릭</b>해 7군데를 모두 찾아보세요.</p>
+
+  <div class="mail r01">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span>
+        <span><span class="flag" data-flag="sender">웰컴복지몰 기업제휴팀 &lt;partnership@welcome-mall.kr&gt;<span class="badge">!</span></span></span></div>
+      <div class="row"><span class="k">받는사람</span><span>honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span><span>[건원엔지니어링 임직원 전용] 웰컴복지몰 특별 제휴 안내</span></div>
+    </div>
+    <div class="band"><div class="big">웰컴복지몰 WELCOME Welfare Mall</div>
+      <div class="small">건원엔지니어링 임직원 전용 특별 제휴</div></div>
+    <div class="mail-body">
+      <p>안녕하세요, 웰컴복지몰입니다. 이번에 건원엔지니어링과 공식 제휴를 맺게 되어 임직원 여러분께 특별한 혜택을 제공하게 되었습니다.</p>
+      <p style="font-size:17px;font-weight:bold;color:#e65100"><span class="flag" data-flag="reward">가입 즉시 복지포인트 100,000P + 전 상품 최대 40% 할인 (총 혜택 약 50만원 상당)<span class="badge">!</span></span></p>
+      <div class="box" style="background:#f1f8e9;border:1px solid #c5e1a5">
+        <div class="bt">✓ 공식 제휴 확인</div>
+        <span class="flag" data-flag="partner">제휴 기업: 건원엔지니어링 · 제휴 승인: 경영지원팀<br>※ 본 제휴는 건원엔지니어링 복리후생팀의 승인을 받았습니다.<span class="badge">!</span></span>
+      </div>
+      <div class="box" style="background:#f8f9fa;border:1px solid #e0e0e0">
+        <div class="bt">📋 가입 절차 (30초 소요)</div>
+        <span class="flag" data-flag="empno">1단계: QR 스캔 또는 가입 버튼 클릭<br>2단계: 건원엔지니어링 <b>사번 및 성명 입력</b><br>3단계: 휴대폰 본인인증<span class="badge">!</span></span>
+      </div>
+      <span class="fakebtn flag" data-flag="link" title="실제 연결 주소(표시용): welcome-welfare-mall.kr">지금 바로 가입하고 10만P 받기<span class="badge">!</span></span>
+      <div class="box" style="background:#fff4e6;border:1px solid #ffc078">
+        <span class="flag" data-flag="urgent">⚠️ 선착순 500명 한정! 현재 247명 가입 완료, 조기 마감될 수 있습니다. 마감 시 10만 포인트 혜택은 재개되지 않습니다.<span class="badge">!</span></span>
+      </div>
+      <div class="box" style="background:#f8f9fa;border:1px solid #e0e0e0">
+        <div class="bt">💬 가입 임직원 후기</div>
+        <span class="flag" data-flag="review">OO사업본부 김○○ 차장 "10만 포인트로 명절 선물 샀어요!"<br>OO본부 이○○ 대리 "회사 제휴라 믿고 샀어요. 완전 만족!"<span class="badge">!</span></span>
+      </div>
+    </div>
+    <div class="mail-foot">웰컴복지몰 기업제휴팀 · 2025년 1월 27일<br>※ 가입 시 사번 인증을 통해 재직 여부가 확인됩니다. · www.welcome-welfare-mall.kr</div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li><b>회사 제휴·복리후생 안내는 회사 공지로 먼저 옵니다.</b> 외부 업체 메일에 "회사와 공식 제휴"라고 적혀 있으면 인사·총무 담당 부서에 직접 확인합니다.</li>
+    <li><b>사번·성명·휴대폰 인증을 외부 사이트에 입력하지 않습니다.</b> 사번은 사내 정보입니다.</li>
+    <li><b>QR코드는 링크와 똑같이 위험합니다.</b> 출처가 확실하지 않은 메일 속 QR코드는 휴대폰으로 찍지 않습니다.</li>
+    <li>"선착순", "조기 마감", "지금 바로" 같은 <b>조급하게 만드는 문구</b>가 보이면 한 번 더 멈춥니다.</li>
+    <li>이미 가입했거나 정보를 입력했다면 <b>바로 전산 담당자에게 신고</b>하고, 같은 비밀번호를 쓰는 곳은 비밀번호를 바꿉니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>처음 보는 외부 업체</b> — 보낸 곳은 <code>welcome-mall.kr</code>이라는 외부 주소입니다. 회사가 정말 새 복지몰과 제휴했다면 회사 공지(인사·총무 부서)로 먼저 안내되지, 외부 업체가 전 직원에게 직접 메일을 돌리지 않습니다. 메일 하단의 홈페이지 주소(<code>welcome-welfare-mall.kr</code>)와도 서로 다릅니다.",
+    "reward": "<b>지나치게 좋은 혜택</b> — 가입만 하면 10만 포인트, 최대 40% 할인, \"총 50만원 상당\"이라는 문구는 판단을 흐리게 만드는 미끼입니다. 공짜로 큰 혜택을 준다는 메일일수록 먼저 의심해야 합니다.",
+    "partner": "<b>회사 이름을 빌린 가짜 \"공식 확인\"</b> — \"제휴 승인: 경영지원팀\"이라고 적어 놓고 아래에서는 \"복리후생팀의 승인\"이라고 해 승인 부서부터 서로 맞지 않습니다. 회사 이름과 부서명을 넣어 믿음을 사려는 수법이며, 진짜 제휴인지는 담당 부서에 직접 물어봐야 알 수 있습니다.",
+    "empno": "<b>사번·성명 입력 요구</b> — 외부 쇼핑몰이 \"재직 확인\"을 핑계로 사번과 성명, 휴대폰 인증까지 요구합니다. 사번은 사내 시스템 로그인이나 내부 사칭 공격에 쓰일 수 있는 내부 정보이므로 외부 사이트에 입력하면 안 됩니다.",
+    "link": "<b>QR코드와 가입 버튼</b> — 버튼과 QR코드는 회사와 무관한 외부 사이트(예: <code>welcome-welfare-mall.kr</code>)로 연결됩니다. 특히 QR코드는 휴대폰으로 찍는 순간 주소를 확인하기 어렵고 회사 보안 장비도 거치지 않아 피싱에 자주 쓰입니다.",
+    "urgent": "<b>선착순·마감 압박</b> — \"500명 한정, 247명 가입, 조기 마감\"처럼 숫자로 조급함을 만들어 확인할 시간을 빼앗습니다. 같은 메일 안에서도 \"남은 자리 253석\" 같은 숫자를 반복해 서두르게 만듭니다.",
+    "review": "<b>가짜 동료 후기</b> — 실제 본부명과 직급을 붙인 후기로 \"다른 사람들도 벌써 썼다\"는 안심을 줍니다. 이름을 가린 후기는 누구나 지어낼 수 있으며, 메일 날짜(2025년)가 훈련 시점(2026년)과 맞지 않는 것도 급조된 메일의 흔적입니다."
+  },
+  "order": [
+    "sender",
+    "reward",
+    "partner",
+    "empno",
+    "link",
+    "urgent",
+    "review"
+  ],
+  "quiz": [
+    {
+      "q": "처음 들어보는 복지몰이 \"회사와 공식 제휴했다\"며 가입을 권합니다. 가장 알맞은 행동은?",
+      "opts": [
+        "회사 이름이 적혀 있으니 바로 가입한다",
+        "인사·총무 담당 부서에 제휴가 사실인지 먼저 확인한다",
+        "동료 후기가 있으니 믿어도 된다"
+      ],
+      "answer": 1,
+      "fb": "회사 이름과 부서명은 누구나 메일에 적을 수 있습니다. 진짜 제휴인지는 내부 담당 부서만 확인해 줄 수 있습니다."
+    },
+    {
+      "q": "외부 사이트가 \"재직 확인\"을 위해 사번과 성명을 입력하라고 합니다. 어떻게 할까요?",
+      "opts": [
+        "입력하지 않는다",
+        "사번만 입력하고 성명은 빼고 넣는다",
+        "포인트를 받으려면 어쩔 수 없으니 입력한다"
+      ],
+      "answer": 0,
+      "fb": "사번은 사내 정보입니다. 외부 사이트에 입력하면 사칭 메일이나 계정 공격에 악용될 수 있습니다."
+    },
+    {
+      "q": "메일에 QR코드가 있습니다. 링크를 누르는 것보다 안전할까요?",
+      "opts": [
+        "네, QR코드는 휴대폰으로 찍으니 안전하다",
+        "아니요, 연결 주소를 확인하기 어렵고 회사 보안 장비도 거치지 않아 더 위험할 수 있다",
+        "QR코드는 악용될 수 없다"
+      ],
+      "answer": 1,
+      "fb": "QR코드도 결국 인터넷 주소입니다. 출처가 불확실한 메일의 QR코드는 찍지 마세요."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람 주소",
+    "reward": "큰 주황색 혜택 문구",
+    "partner": "공식 제휴 확인 상자",
+    "empno": "가입 절차",
+    "link": "가입 버튼",
+    "urgent": "선착순 마감 안내",
+    "review": "임직원 후기"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>

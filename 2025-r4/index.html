@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2025년 4차 모의훈련 · 은행 퇴직연금 운용보고서 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+.mail-head .row > span:last-child { min-width: 0; word-break: break-all; }
+.bar { display: block; padding: 14px 22px; color: #fff; font-weight: bold; font-size: 18px; border-radius: 0; }
+.bar small { display: block; font-weight: normal; font-size: 12px; opacity: .85; }
+.mail-body { padding: 22px; }
+.mail-body h3 { margin: 0 0 12px; font-size: 20px; }
+.mail-body p { margin: 0 0 12px; }
+.box { border-radius: 8px; padding: 12px 16px; margin: 14px 0; }
+.box p, .box ul { margin: 4px 0; }
+.box ul { padding-left: 20px; }
+.box-y { background: #fff8e1; border-left: 4px solid #ffc107; }
+.box-o { background: #fff3e0; border-left: 4px solid #ff9800; color: #bf360c; }
+.box-b { background: #e3f2fd; border: 1px solid #bbdefb; color: #1565c0; }
+.kv { width: 100%; border-collapse: collapse; font-size: 14px; }
+.kv td { padding: 7px 4px; border-bottom: 1px solid #eee; vertical-align: top; }
+.kv td:first-child { width: 32%; font-weight: bold; }
+.red { color: #d32f2f; font-weight: bold; }
+.fakebtn { display: block; margin: 20px auto; background: var(--brand); color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; max-width: 360px; }
+.mail-foot { padding: 16px 22px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.mail-foot p { margin: 0 0 6px; }
+.fakebtn.flag.found { background: #a33a0a !important; }
+.bar.flag { outline-offset: -3px; border-radius: 0; }
+.rules code { font-size: 13px; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h2>1. 2025년 4차 모의훈련 메일입니다 <span class="counter" id="flagCounter">0 / 6</span></h2>
+  <p class="lead">2025년 4차 모의훈련에서 발송한 메일을 재현했습니다(받는 사람은 홍길동으로, 보낸사람 주소·링크는 교육용 예시로 바꿈).
+    수상한 곳을 <b>직접 클릭</b>해 6군데를 모두 찾아보세요.</p>
+
+  <div class="mail">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span><span class="flag" data-flag="sender">우리은행 퇴직연금 &lt;pension@wooribank-report.com&gt;<span class="badge">!</span></span></div>
+      <div class="row"><span class="k">받는사람</span><span>honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span><span>퇴직연금 운용보고서 안내</span></div>
+    </div>
+    <div class="bar flag" data-flag="brand" style="background:#0067ac;text-align:center">우리은행<span class="badge">!</span><small>WOORI BANK</small></div>
+    <div class="mail-body">
+      <h3>퇴직연금 운용보고서 안내</h3>
+      <p><span class="flag" data-flag="greeting">고객님께서 가입하신 퇴직연금<span class="badge">!</span></span>의 <b>2025년 상반기 운용보고서</b>가 도착하였습니다.<br>
+        보고서를 확인하신 후, 연금 운용전략을 다시 점검해보시기 바랍니다.</p>
+      <p><span class="flag" data-flag="threat"><b>※ 해당 보고서는 3일 이내 확인하지 않으면 자동 폐기됩니다.</b><span class="badge">!</span></span></p>
+      <span class="fakebtn flag" data-flag="link" style="background:#0067ac" title="실제 링크: 은행이 아닌 가짜 주소">운용보고서 보기<span class="badge">!</span></span>
+      <p>본 메일은 정보통신망법에 의거하여 발송된 발신전용 메일입니다.<br>
+        <span class="flag" data-flag="footer">관련 문의는 우리은행 퇴직연금 고객센터(1588-XXXX)로 연락주시기 바랍니다.<span class="badge">!</span></span></p>
+    </div>
+    <div class="mail-foot"><p>ⓒ WOORI BANK. All rights reserved.</p></div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li><b>은행·연금·카드 안내는 메일 링크로 보지 않습니다.</b> 은행 앱이나 주소창에 직접 입력한 공식 홈페이지에서 확인합니다.</li>
+    <li><b>회사 메일로 개인 금융 안내가 오면</b> 은행에 회사 메일을 등록한 적이 있는지부터 떠올려 봅니다.</li>
+    <li>"3일 이내 폐기" 같은 <b>기한·불이익 문구</b>가 있으면 더 의심하고, 실제 고객센터 번호가 적혀 있어도 그것만으로 믿지 않습니다.</li>
+    <li>이미 눌렀거나 비밀번호·개인정보를 입력했다면 <b>즉시 비밀번호를 바꾸고 전산 담당자에게 신고</b>합니다. 숨기면 피해가 커집니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>은행 공식 도메인이 아님</b> — 은행 이름이 들어 있어도 <code>wooribank-report.com</code>처럼 단어를 덧붙인 주소는 은행이 아닙니다. 금융기관을 자처하는 메일은 반드시 실제 주소를 확인하세요.",
+    "brand": "<b>은행 로고 흉내</b> — 실제 훈련 메일은 은행 홈페이지의 로고 이미지를 그대로 불러와 진짜처럼 보이게 했습니다. 로고는 누구나 복사할 수 있으므로 진위의 근거가 되지 않습니다.",
+    "greeting": "<b>\"고객님\" — 누군지 모르는 인사</b> — 실제 금융기관 안내는 보통 이름 등 나를 특정하는 정보를 씁니다. 게다가 개인 연금 안내를 <b>회사 메일</b>로 받는 것 자체가 이상합니다. 은행에 회사 메일을 등록한 적이 있는지 떠올려 보세요.",
+    "threat": "<b>\"3일 이내 미확인 시 자동 폐기\"</b> — 운용보고서는 은행 앱·홈페이지에서 언제든 다시 볼 수 있는 자료라 폐기될 이유가 없습니다. 기한을 걸어 서두르게 만드는 전형적인 압박 문구입니다.",
+    "link": "<b>가짜 보고서 링크</b> — \"운용보고서 보기\"는 <b>은행과 무관한 가짜 주소</b>로 연결되도록 만들어져 있었습니다. 실제 공격이라면 인터넷뱅킹 로그인 화면을 흉내 내 금융정보를 빼 가거나, \"보고서 파일\"이라며 악성코드를 내려받게 합니다.",
+    "footer": "<b>진짜처럼 보이게 하는 고객센터 번호·법 조항</b> — 실제 은행 고객센터 번호와 \"정보통신망법\" 문구를 붙여 신뢰를 높였습니다. 번호가 진짜여도 메일이 진짜라는 뜻은 아닙니다. 확인은 은행 앱이나 직접 접속한 공식 홈페이지에서 하세요."
+  },
+  "order": [
+    "sender",
+    "brand",
+    "greeting",
+    "threat",
+    "link",
+    "footer"
+  ],
+  "quiz": [
+    {
+      "q": "회사 메일로 \"퇴직연금 운용보고서\" 안내가 왔습니다. 가장 안전한 확인 방법은?",
+      "opts": [
+        "메일의 \"운용보고서 보기\" 버튼을 누른다",
+        "첨부파일이 있으면 열어 본다",
+        "은행 앱이나 직접 접속한 공식 홈페이지에서 확인한다"
+      ],
+      "answer": 2,
+      "fb": "금융 정보는 내가 직접 찾아간 공식 경로에서만 확인하세요."
+    },
+    {
+      "q": "\"3일 이내 확인하지 않으면 보고서가 자동 폐기된다\"는 문구에 대한 올바른 생각은?",
+      "opts": [
+        "폐기되면 안 되니 서둘러 확인한다",
+        "서두르게 만드는 압박 문구이므로 오히려 의심해야 한다",
+        "은행은 원래 보고서를 폐기한다"
+      ],
+      "answer": 1,
+      "fb": "기한을 걸어 생각할 시간을 빼앗는 것이 피싱의 대표적인 특징입니다."
+    },
+    {
+      "q": "메일 하단에 실제 은행 고객센터 번호가 적혀 있습니다. 이 메일은 진짜일까요?",
+      "opts": [
+        "알 수 없다, 번호는 누구나 베껴 쓸 수 있으므로 보낸사람 주소와 링크를 확인해야 한다",
+        "그렇다, 실제 번호가 있으니 은행이 보낸 것이다",
+        "번호가 있으면 링크도 안전하다"
+      ],
+      "answer": 0,
+      "fb": "진짜 정보를 섞어 넣는 것은 신뢰를 얻기 위한 흔한 수법입니다."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람 주소",
+    "brand": "상단 은행 배너",
+    "greeting": "\"고객님\" 문구",
+    "threat": "자동 폐기 문장",
+    "link": "파란 버튼",
+    "footer": "고객센터 안내 문장"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>

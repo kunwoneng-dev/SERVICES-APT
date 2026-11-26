@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>11차 악성메일 모의훈련 · 계정 인증 사칭</title>
+<link rel="stylesheet" href="../common/v1/edu-kit.css">
+<style>
+.mail-body { padding: 26px 22px; }
+.brandtxt { color: #0b9df4; font-size: 24px; }
+.notice { background: #f2f7fc; border-radius: 12px; padding: 22px; margin-top: 16px; }
+.notice .tag { color: #53708a; font-size: 12px; letter-spacing: 1px; }
+.notice .ttl { font-size: 21px; font-weight: bold; margin-top: 6px; }
+.notice p { color: #5c6872; margin: 12px 0 0; }
+.fakebtn { display: block; margin-top: 22px; background: var(--brand); color: #fff; text-align: center;
+    padding: 14px; border-radius: 8px; font-weight: bold; }
+.mail-foot { padding: 16px 22px; border-top: 1px solid var(--line); color: #8a949d; font-size: 12px; }
+.fakebtn.flag.found { background: #a33a0a; }
+.q button.opt { display: block; width: 100%; text-align: left; font: inherit; background: #fff;
+    border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin-top: 6px; cursor: pointer; }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <h2>1. 실제로 들어온 메일입니다 <span class="counter" id="flagCounter">0 / 6</span></h2>
+  <p class="lead">최근 우리 회사로 실제 유입된 피싱 메일을 그대로 재현했습니다(수신자 주소만 바꿈).
+    수상한 곳을 <b>직접 클릭</b>해 6군데를 모두 찾아보세요.</p>
+
+  <div class="mail">
+    <div class="mail-head">
+      <div class="row"><span class="k">보낸사람</span>
+        <span class="flag" data-flag="sender">Kunwoneng &lt;sales@documentsxmtpit.store&gt;<span class="badge">!</span></span></div>
+      <div class="row"><span class="k">받는사람</span><span>honggildong@kunwoneng.com</span></div>
+      <div class="row"><span class="k">제목</span>
+        <span class="flag" data-flag="subject">Kunwoneng 인증 안내<span class="badge">!</span></span></div>
+    </div>
+    <div class="mail-body">
+      <div><span class="brandtxt flag" data-flag="brand">kunwoneng.com<span class="badge">!</span></span></div>
+      <div class="notice">
+        <div class="tag">KUNWONENG.COM</div>
+        <div class="ttl">계정 확인이 필요합니다</div>
+        <p>귀하의 <span class="flag" data-flag="personal">honggildong@kunwoneng.com<span class="badge">!</span></span>
+          계정 인증 절차가 완료되지 않았습니다.
+          <span class="flag" data-flag="threat">인증이 완료되지 않은 상태가 계속될 경우 계정이 폐쇄될 예정입니다.<span class="badge">!</span></span></p>
+      </div>
+      <span class="fakebtn flag" data-flag="link" title="실제 링크: https://lakenonasocial.com/PM/index.php?userid=…">인증 완료하기<span class="badge">!</span></span>
+    </div>
+    <div class="mail-foot">이 안내문은 귀하의 kunwoneng.com 계정 인증 상태와 관련된 내용입니다.
+      자세한 내용을 확인하려면 계정에 직접 접속하시기 바랍니다.</div>
+  </div>
+  <div class="hint">막히면 <button type="button" id="hintBtn">힌트 보기</button> <span id="hintText"></span></div>
+
+  <div class="explain" id="explain"></div>
+
+  <h2>2. 이렇게 대응하세요</h2>
+  <div class="rules"><ol>
+    <li><b>보낸사람은 표시 이름이 아니라 실제 주소</b>(&lt; &gt; 안)를 확인합니다. 회사 시스템 안내는 회사 도메인에서만 옵니다.</li>
+    <li><b>버튼·링크는 누르기 전에 마우스를 올려</b> 실제 주소를 확인합니다. 회사와 무관한 주소면 절대 누르지 않습니다.</li>
+    <li>"계정 폐쇄", "인증 만료" 같은 <b>압박 문구가 오면 메일 링크 대신</b> 평소 쓰는 사내 시스템에 직접 접속하거나 전산 담당자에게 확인합니다.</li>
+    <li>이미 눌렀거나 비밀번호를 입력했다면 <b>즉시 비밀번호를 바꾸고 전산 담당자에게 신고</b>합니다. 숨기면 피해가 커집니다.</li>
+  </ol></div>
+
+  <h2>3. 확인 퀴즈 <span class="counter" id="quizCounter">0 / 3</span></h2>
+  <div id="quiz"></div>
+
+  <div class="done" id="doneBox">모든 항목을 확인했습니다. 아래 확인 버튼을 눌러 교육을 마쳐 주세요.</div>
+</div>
+
+<script>
+window.EDU_ROUND = {
+  "flags": {
+    "sender": "<b>가짜 발신 주소</b> — 표시 이름은 \"Kunwoneng\"이지만 실제 주소는 <code>sales@documentsxmtpit.store</code>입니다. 회사와 아무 관계 없는 외부 도메인이며, 표시 이름은 누구나 마음대로 바꿀 수 있습니다.",
+    "subject": "<b>막연한 제목</b> — \"인증 안내\"라고만 하고 어떤 시스템인지 밝히지 않습니다. 받는 사람이 알아서 \"메일 계정 얘기인가?\" 하고 짐작하게 만드는 수법입니다.",
+    "brand": "<b>회사 흉내</b> — 로고 대신 회사 도메인을 큰 글씨로 적어 공식 안내처럼 보이게 했습니다. 실제 사내 공지는 이런 양식으로 오지 않습니다.",
+    "personal": "<b>자동 개인화</b> — 내 메일 주소가 본문에 들어 있어 나를 아는 곳에서 보낸 것처럼 보이지만, 발송 프로그램이 받는 주소를 그대로 끼워 넣은 것일 뿐입니다.",
+    "threat": "<b>공포·압박</b> — \"계정이 폐쇄될 예정\"이라며 겁을 줘서 확인할 틈 없이 서둘러 누르게 만듭니다. 기한도, 근거도, 문의처도 없습니다.",
+    "link": "<b>엉뚱한 링크 주소</b> — 버튼의 실제 연결 주소는 <code>https://lakenonasocial.com/PM/index.php?userid=(내 메일주소)</code>입니다. 회사와 무관한 사이트이고, 내 메일 주소를 미리 채워 둔 <b>가짜 로그인 페이지</b>로 비밀번호를 빼 가려는 것입니다."
+  },
+  "order": [
+    "sender",
+    "subject",
+    "brand",
+    "personal",
+    "threat",
+    "link"
+  ],
+  "quiz": [
+    {
+      "q": "보낸사람이 \"Kunwoneng\"으로 표시됐습니다. 회사에서 보낸 메일이라고 볼 수 있을까요?",
+      "opts": [
+        "네, 회사 이름이 적혀 있으니 믿어도 된다",
+        "아니요, < > 안의 실제 주소 도메인을 확인해야 한다",
+        "본문에 내 메일 주소가 있으면 믿어도 된다"
+      ],
+      "answer": 1,
+      "fb": "표시 이름은 아무나 정할 수 있습니다. 실제 주소의 @ 뒤 도메인이 회사 도메인인지 꼭 확인하세요."
+    },
+    {
+      "q": "\"인증 완료하기\" 버튼을 누르기 전에 가장 먼저 해야 할 일은?",
+      "opts": [
+        "버튼에 마우스를 올려 실제 연결 주소를 확인한다",
+        "일단 눌러 보고 이상하면 창을 닫는다",
+        "답장을 보내 진짜인지 물어본다"
+      ],
+      "answer": 0,
+      "fb": "누르는 순간 악성 사이트에 접속됩니다. 답장도 공격자에게 가므로 소용없습니다."
+    },
+    {
+      "q": "실수로 링크를 눌러 비밀번호까지 입력했습니다. 어떻게 해야 할까요?",
+      "opts": [
+        "아무 일 없었으니 그냥 넘어간다",
+        "메일만 삭제한다",
+        "즉시 비밀번호를 바꾸고 전산 담당자에게 신고한다"
+      ],
+      "answer": 2,
+      "fb": "빨리 알릴수록 피해를 막을 수 있습니다. 신고했다고 불이익은 없습니다."
+    }
+  ],
+  "hints": {
+    "sender": "보낸사람 주소",
+    "subject": "제목",
+    "brand": "상단 큰 글씨",
+    "personal": "본문 속 내 메일 주소",
+    "threat": "계정 폐쇄 문장",
+    "link": "파란 버튼"
+  }
+};
+</script>
+<script src="../common/v1/edu-bridge.js"></script>
+<script src="../common/v1/edu-kit.js"></script>
+</body>
+</html>
